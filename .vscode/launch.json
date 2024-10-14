@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Infoplay-web",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/infoplay-web",
+      "console": "internalConsole",
+      "mainClass": "dev.kgtb32.infoplay.infoplay_web.InfoplayWebApplication",
+      "projectName": "infoplay-web",
+      "envFile": "${workspaceFolder}/infoplay-web/local.env"
+    }
+  ]
+}
