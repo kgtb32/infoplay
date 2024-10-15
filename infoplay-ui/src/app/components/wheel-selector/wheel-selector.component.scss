@@ -1,0 +1,136 @@
+.item {
+  height: 8em;
+  width: 8em;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.wheel-select-box {
+  perspective: 50em;
+}
+
+.item-0 {
+  position: absolute;
+  top: 26vh;
+  left: 48vw;
+  filter: brightness(40%);
+}
+
+.item-1 {
+  position: absolute;
+  top: 28vh;
+  left: 41vw;
+  filter: brightness(40%);
+}
+
+.item-2 {
+  position: absolute;
+  top: 31vh;
+  left: 34vw;
+  transform: rotateY(-8deg);
+  filter: brightness(50%);
+}
+
+.item-3 {
+  position: absolute;
+  top: 34vh;
+  left: 30vw;
+  transform: rotateY(-10deg);
+  filter: brightness(60%);
+}
+
+.item-4 {
+  position: absolute;
+  top: 37vh;
+  left: 29vw;
+  transform: rotateY(4deg);
+  filter: brightness(60%);
+}
+
+.item-5 {
+  position: absolute;
+  top: 39vh;
+  left: 28vw;
+  transform: rotateY(8deg);
+  filter: brightness(70%);
+}
+
+.item-6 {
+  position: absolute;
+  top: 44vh;
+  left: 32vw;
+  transform: rotateY(4deg);
+  filter: brightness(80%);
+}
+
+.item-7 {
+  position: absolute;
+  top: 48vh;
+  left: 40vw;
+}
+
+.item-8 {
+  position: absolute;
+  top: 50vh;
+  left: 48vw;
+}
+
+.item-9 {
+  position: absolute;
+  top: 48vh;
+  left: 56vw;
+}
+
+.item-10 {
+  position: absolute;
+  top: 44vh;
+  left: 64vw;
+  transform: rotateY(-4deg);
+  filter: brightness(80%);
+}
+
+.item-11 {
+  position: absolute;
+  top: 39vh;
+  left: 68vw;
+  transform: rotateY(-8deg);
+  z-index: -1;
+  filter: brightness(70%);
+}
+
+.item-12 {
+  position: absolute;
+  top: 37vh;
+  left: 67vw;
+  transform: rotateY(-4deg);
+  z-index: -2;
+  filter: brightness(60%);
+}
+
+.item-13 {
+  position: absolute;
+  top: 34vh;
+  left: 66vw;
+  transform: rotateY(10deg);
+  z-index: -3;
+  filter: brightness(60%);
+}
+
+.item-14 {
+  position: absolute;
+  top: 31vh;
+  left: 62vw;
+  transform: rotateY(8deg);
+  z-index: -4;
+  filter: brightness(50%);
+}
+
+.item-15 {
+  position: absolute;
+  top: 28vh;
+  left: 55vw;
+  filter: brightness(40%);
+}

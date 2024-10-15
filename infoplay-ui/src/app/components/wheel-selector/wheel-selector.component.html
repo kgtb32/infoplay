@@ -1,1 +1,17 @@
-<p>wheel-selector works!</p>
+<div class="d-flex wheel-select-box">
+  @for (wheelItem of visibleItems; track $index) {
+  <div class="item-{{ $index }}">
+    <div class="item">
+      <img [src]="wheelItem.image" alt="base" />
+    </div>
+  </div>
+  }
+</div>
+
+<p style="color: white">{{ this.selectedIndex }}</p>
+<button style="position: absolute; top: 20vh" (click)="moveDown()">
+  LEFT DOWN
+</button>
+<button style="position: absolute; top: 50vh" (click)="moveUp()">
+  RIGHT UP
+</button>
