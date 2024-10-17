@@ -7,6 +7,7 @@ import { AudioService } from '../../services/audio.service';
 import { JoypadService } from '../../services/joypad.service';
 import { move } from '../../services/wheel-selector/wheel-selector';
 import { dTrig } from '../../utils/math-utils';
+import { minimumArray } from '../../utils/array-utils';
 
 @Component({
   selector: 'app-wheel-selector',
@@ -31,7 +32,7 @@ export class WheelSelectorComponent implements AfterViewInit {
 
   @Input()
   set items(items: WheelSelectorItem[]) {
-    this._items = items
+    this._items = minimumArray(items, WheelSelectorComponent.MAX_ITEMS)
     this.visibleItems = slice(this._items, 0, WheelSelectorComponent.MAX_ITEMS)
   }
 

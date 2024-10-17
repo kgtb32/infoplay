@@ -1,7 +1,7 @@
 .wheel-selector-img {
   position: absolute;
-  width: auto;
-  height: 10em;
+  width: 4em;
+  height: auto;
 }
 
 .wheel-selector-item {
@@ -36,6 +36,8 @@
   border: 2px solid #0095ff;
   filter: brightness(100%);
   box-shadow: 5px 5px 100px 5px #0095ff;
+  z-index: 10;
+  background: black;
 }
 
 @keyframes scaleAnimation {
