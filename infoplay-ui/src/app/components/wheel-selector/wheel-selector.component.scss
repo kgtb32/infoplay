@@ -8,6 +8,15 @@
   position: absolute;
 }
 
+.wheel-selector-game-description {
+  position: absolute;
+  width: 50%;
+  top: 70%;
+  left: 25%;
+  max-height: 25%;
+  overflow: auto;
+}
+
 .wheel-selector-base-container {
   height: 100vh;
   width: 100%;
@@ -24,9 +33,9 @@
 }
 
 .wheel-selector-global-container > .wheel-selector-item:nth-child(5) img {
-  box-shadow: 5px 5px 100px 5px #0095ff;
   border: 2px solid #0095ff;
   filter: brightness(100%);
+  box-shadow: 5px 5px 100px 5px #0095ff;
 }
 
 @keyframes scaleAnimation {

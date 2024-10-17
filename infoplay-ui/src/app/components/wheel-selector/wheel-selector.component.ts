@@ -17,7 +17,7 @@ import { dTrig } from '../../utils/math-utils';
 export class WheelSelectorComponent implements AfterViewInit {
   private static readonly MAX_ITEMS = 16
   private static readonly THREESHOLD = 150
-  private static readonly DEFAULT_SELECTED = 8
+  private static readonly DEFAULT_SELECTED = 4
   private static readonly ELIPSIS_2A = 400
   private static readonly ELIPSIS_2B = 150
 
@@ -33,6 +33,10 @@ export class WheelSelectorComponent implements AfterViewInit {
   set items(items: WheelSelectorItem[]) {
     this._items = items
     this.visibleItems = slice(this._items, 0, WheelSelectorComponent.MAX_ITEMS)
+  }
+
+  get currentSelectedGame() {
+    return this.visibleItems[WheelSelectorComponent.DEFAULT_SELECTED]
   }
 
   constructor(

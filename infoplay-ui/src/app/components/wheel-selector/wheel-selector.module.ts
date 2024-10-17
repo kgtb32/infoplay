@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WheelSelectorComponent } from './wheel-selector.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { GameDescriptionModule } from '../game-description/game-description.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GameDescriptionModule,
   ],
   exports: [
     WheelSelectorComponent
