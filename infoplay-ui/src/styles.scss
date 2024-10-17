@@ -1,9 +1,50 @@
+@import "@fontsource/roboto"; // Defaults to weight 400
+@import "@fontsource/roboto/400.css"; // Specify weight
+@import "@fontsource/roboto/400-italic.css"; // Specify weight and style
+
 /* You can add global styles to this file, and also import other style files */
 body {
   background: black;
   margin: 0px;
 }
 
+h2 {
+  margin: 0px;
+  padding-bottom: 0.25em;
+}
+
 .d-flex {
   display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-1 {
+  gap: 0.25em;
+}
+
+.ml-2 {
+  margin-left: 0.5em;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
+.gap-2 {
+  gap: 0.5em;
+}
+
+.white-space-pre-wrap {
+  white-space: pre-wrap;
 }

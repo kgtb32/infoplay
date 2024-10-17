@@ -1,0 +1,28 @@
+<div class="game-description-global-theme">
+  <h2>{{ game.name }}</h2>
+  <div class="d-flex gap-2">
+    <div class="d-flex flex-column">
+      <span class="description-icon">{{ game.description?.company }}</span>
+      <span class="description-icon">{{ game.description?.platform }}</span>
+      <span class="description-icon">{{ game.description?.releaseYear }}</span>
+      @if (game.description?.players) {
+      <span class="d-flex gap-1">
+        <i-tabler name="device-gamepad-2"></i-tabler>
+        <span>{{ game.description?.players }} Joueur(s)</span>
+      </span>
+      } @if (game.description?.genres) {
+      <span class="d-flex gap-1">
+        <i-tabler name="tags"></i-tabler>
+        <div class="d-flex gap-1">
+          @for (genre of game.description?.genres; track $index) {
+          <span>{{ genre }}</span>
+          }
+        </div>
+      </span>
+      }
+    </div>
+    <p class="flex-1 m-0 white-space-pre-wrap game-description-description">
+      {{ game.description?.description }}
+    </p>
+  </div>
+</div>
