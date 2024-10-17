@@ -2597,6 +2597,13 @@ ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+angular-tabler-icons@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/angular-tabler-icons/-/angular-tabler-icons-3.1.0.tgz#ae863d980fda2a0e1bbcb81b3f9e76d106dccf4b"
+  integrity sha512-g26cUGS9y1ZroTx/rlvRG7rSunIuPzCRC7JbWkqmreiyvLEzPn2aCMqzp7D7KR38prlCf1fAECr6FGHu5ZVosg==
+  dependencies:
+    tslib "^2.0.0"
+
 animejs@^3.2.2:
   version "3.2.2"
   resolved "https://registry.npmjs.org/animejs/-/animejs-3.2.2.tgz"

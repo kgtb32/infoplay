@@ -21,6 +21,7 @@
     "@fontsource/roboto": "^5.1.0",
     "@tsparticles/angular": "^3.0.0",
     "@tsparticles/engine": "^3.5.0",
+    "angular-tabler-icons": "^3.1.0",
     "animejs": "^3.2.2",
     "dayjs": "^1.11.13",
     "joypad.js": "^2.3.5",
