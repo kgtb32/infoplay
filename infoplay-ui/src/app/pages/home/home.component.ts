@@ -9,6 +9,11 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 export class HomeComponent {
 
   readonly wheelItems: WheelSelectorItem[] = [
+    ...Array<WheelSelectorItem>(16).fill({
+      name: 'test',
+      description: 'test',
+      image: "https://cdn.thegamesdb.net/images/thumb/boxart/front/129805-1.jpg",
+    }),
     {
       name: 'Démo item',
       description: "Démo item description",

@@ -1,6 +1,6 @@
 import { WheelSelectorItem } from "../../models/components/wheel-selector-item"
 
-export function moveUp(maxItems: number, currentIndex: number, items: WheelSelectorItem[]): WheelSelectorItem[] {
+export function move(maxItems: number, currentIndex: number, items: WheelSelectorItem[]): WheelSelectorItem[] {
     let finalArray = new Array()
     let index = currentIndex
     for (let i = 0; i < maxItems; i++) {

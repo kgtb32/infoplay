@@ -1,9 +1,13 @@
-<div class="d-flex wheel-select-box">
-  @for (wheelItem of visibleItems; track $index) {
-  <div class="item-{{ $index }}">
-    <div class="item">
-      <img [src]="wheelItem.image" alt="base" />
+<div class="wheel-selector-base-container">
+  <div class="wheel-selector-global-container wheel-selector-animator">
+    @for (wheelItem of visibleItems; track $index) {
+    <div
+      class="wheel-selector-item"
+      [style.left]="getGameTransformCss($index)[0] + 'px'"
+      [style.top]="getGameTransformCss($index)[1] + 'px'"
+    >
+      <img class="wheel-selector-img" [src]="wheelItem.image" alt="base" />
     </div>
+    }
   </div>
-  }
 </div>
