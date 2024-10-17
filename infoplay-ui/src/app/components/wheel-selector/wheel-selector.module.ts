@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WheelSelectorComponent } from './wheel-selector.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { WheelSelectorComponent } from './wheel-selector.component';
     WheelSelectorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   exports: [
     WheelSelectorComponent
