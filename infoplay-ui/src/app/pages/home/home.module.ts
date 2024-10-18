@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HomeListModule } from '../../components/home-list/home-list.module';
+import { InlineListLayoutModule } from '../../layouts/inline-list-layout/inline-list-layout.module';
 import { HomeComponent } from './home.component';
 
 
@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
   ],
   imports: [
     CommonModule,
-    HomeListModule
+    InlineListLayoutModule
   ]
 })
 export class HomeModule { }
