@@ -1,0 +1,20 @@
+<div class="home-list-container d-flex flex-column gap-2">
+  <div class="home-list-items-containers">
+    @for (item of _items; track $index) {
+    <div
+      style="color: white"
+      class="home-list-item d-flex flex-column"
+      [ngClass]="{
+        'home-list-item-selected': this.selectedIndex == $index
+      }"
+    >
+      <img [src]="item.image" alt="game" class="flex-1" />
+      <div class="d-flex select-info-overlay">
+        <span>Appuyez sur </span>
+        <div class="button-x">X</div>
+        <span>pour jouer</span>
+      </div>
+    </div>
+    }
+  </div>
+</div>

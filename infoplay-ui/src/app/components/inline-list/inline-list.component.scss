@@ -1,0 +1,129 @@
+@media screen and (max-width: 1024px) {
+  $tile-size: 110px;
+
+  .home-list-item {
+    width: $tile-size;
+    height: $tile-size;
+    min-height: $tile-size;
+    min-width: $tile-size;
+    margin-top: 0em;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1524px) {
+  $tile-size: 120px;
+
+  .home-list-item {
+    width: $tile-size;
+    height: $tile-size;
+    min-height: $tile-size;
+    min-width: $tile-size;
+  }
+}
+
+@media screen and (min-width: 1524px) {
+  $tile-size: 250px;
+
+  .home-list-item {
+    width: $tile-size;
+    height: $tile-size;
+    min-height: $tile-size;
+    min-width: $tile-size;
+    margin-top: 5em;
+  }
+}
+
+.home-list-item {
+  text-align: center;
+  font-family: "Roboto", Arial, monospace;
+  border-radius: 0.5em;
+  filter: brightness(60%);
+}
+
+.home-list-item img {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  margin: auto;
+  border-radius: 0.5em;
+}
+
+.select-info-overlay {
+  display: none;
+  padding-top: 0.5em;
+}
+
+@keyframes scaleAnimation {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1.5);
+  }
+}
+
+.home-list-item-selected {
+  background: #22272d;
+  border: 2px solid #0095ff;
+  box-shadow: 5px 5px 100px 5px #0095ff;
+  width: min-content;
+  min-width: min-content;
+  transform: scale(1.5);
+  filter: brightness(100%);
+  animation: scaleAnimation 0.1s;
+  z-index: 1;
+
+  img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .select-info-overlay {
+    display: flex;
+    padding: 0.25em;
+    font-size: 0.75em;
+    justify-content: center;
+    width: 100%;
+    gap: 0.25em;
+  }
+
+  .button-x {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    display: block;
+    background: red;
+    color: black;
+    font-weight: 1em;
+  }
+}
+
+.home-list-items-containers {
+  padding-top: 7em;
+  margin-bottom: auto;
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+.home-list-container {
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  position: absolute;
+}
+
+.home-list-item:first-child {
+  margin-left: 10em;
+}
+
+.home-list-item:last-child {
+  margin-right: 10em;
+}
