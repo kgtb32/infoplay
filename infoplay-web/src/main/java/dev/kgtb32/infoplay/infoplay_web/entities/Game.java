@@ -12,11 +12,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "game")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Game{
     @Id
