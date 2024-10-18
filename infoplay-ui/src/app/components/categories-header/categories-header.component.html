@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between category-header-container">
+  <h2 class="my-auto">InfoPlay</h2>
+  <div class="d-flex gap-2">
+    @for (category of categories; track $index) {
+    <button
+      class="category-header-button"
+      [ngClass]="{
+        'category-header-button-selected': category === this.selected
+      }"
+    >
+      {{ category }}
+    </button>
+    }
+  </div>
+  <h2 class="my-auto">{{ this.date }}</h2>
+</div>

@@ -1,0 +1,21 @@
+.category-header-button {
+  background: #22272d;
+  padding: 1em;
+  border: 2px solid lightgray;
+  color: white;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
+
+.category-header-button-selected {
+  background: white;
+  color: #22272d;
+}
+
+.category-header-container {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  padding-left: 1em;
+  padding-right: 1em;
+  z-index: 1;
+}
