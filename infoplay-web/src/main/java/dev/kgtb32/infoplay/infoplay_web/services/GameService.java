@@ -2,6 +2,7 @@ package dev.kgtb32.infoplay.infoplay_web.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -46,5 +47,13 @@ public class GameService {
         catch(IOException e){
             return Optional.empty();
         }
+    }
+
+    public List<GameResponseDto> getFavoritesGames(){
+        return this.gameRepository
+            .findAllByFavorite(true)
+            .parallelStream()
+            .map(gameMapper::gameToResponseDto)
+            .toList();
     }
 }

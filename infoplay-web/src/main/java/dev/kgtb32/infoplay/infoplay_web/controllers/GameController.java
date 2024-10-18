@@ -1,7 +1,10 @@
 package dev.kgtb32.infoplay.infoplay_web.controllers;
 
+import java.util.List;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -32,6 +35,14 @@ public class GameController {
             gameService
                 .createGame(gameCreateDto, image, game)
                 .orElseThrow(RestBadRequest::new)
+        );
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping("favorites")
+    public ResponseEntity<List<GameResponseDto>> favorites(){
+        return ResponseEntity.ok(
+            gameService.getFavoritesGames()
         );
     }
 }
