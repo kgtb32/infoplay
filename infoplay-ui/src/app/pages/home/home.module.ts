@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { InlineListLayoutModule } from '../../layouts/inline-list-layout/inline-list-layout.module';
 import { HomeComponent } from './home.component';
-import { WheelSelectorModule } from "../../components/wheel-selector/wheel-selector.module";
 
 
 
@@ -11,7 +11,7 @@ import { WheelSelectorModule } from "../../components/wheel-selector/wheel-selec
   ],
   imports: [
     CommonModule,
-    WheelSelectorModule
+    InlineListLayoutModule
   ]
 })
 export class HomeModule { }

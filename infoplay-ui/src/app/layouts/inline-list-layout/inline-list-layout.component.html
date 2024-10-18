@@ -1,0 +1,11 @@
+<app-inline-list
+  [items]="this.menuItems"
+  (itemSelected)="this.itemSelected($event)"
+></app-inline-list>
+<div class="d-flex flex-column inline-list-layout-container">
+  <app-categories-header></app-categories-header>
+  <div class="flex-1"></div>
+  @if (this.selectedItem) {
+  <app-game-description [game]="selectedItem"></app-game-description>
+  }
+</div>

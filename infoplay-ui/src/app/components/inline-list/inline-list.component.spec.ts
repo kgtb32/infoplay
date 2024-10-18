@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WheelSelectorComponent } from './wheel-selector.component';
+import { InlineListComponent } from './inline-list.component';
 
-describe('WheelSelectorComponent', () => {
-  let component: WheelSelectorComponent;
-  let fixture: ComponentFixture<WheelSelectorComponent>;
+describe('InlineListComponent', () => {
+  let component: InlineListComponent;
+  let fixture: ComponentFixture<InlineListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WheelSelectorComponent]
+      declarations: [InlineListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WheelSelectorComponent);
+    fixture = TestBed.createComponent(InlineListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

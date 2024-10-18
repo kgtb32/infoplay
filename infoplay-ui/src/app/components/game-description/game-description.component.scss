@@ -1,13 +1,37 @@
-.description-icon {
-  margin-left: 30px;
+@media screen and (max-width: 1524px) {
+  .home-list-description {
+    height: 16em;
+  }
 }
 
-.game-description-global-theme {
+.home-list-description {
   color: white;
-  font-family: "roboto";
+  font-family: "Roboto";
+  z-index: 3;
+  position: relative;
+  height: 20em;
 }
 
-.game-description-description {
-  max-height: 100%;
+.home-list-description-container {
+  padding-left: 10em;
+  padding-right: 10em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-list-description-container h1 {
+  margin: 0px;
+}
+
+.tag {
+  background: red;
+  padding: 0.25em;
+  border-radius: 0.5em;
+}
+
+.home-list-description-left-pane,
+.home-list-description-right-pane {
+  height: 100%;
   overflow: auto;
 }
