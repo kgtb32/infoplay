@@ -45,4 +45,5 @@ public class GameDescription{
     private String players;
     @Lob
     private String description;
+    private String platform;
 }
