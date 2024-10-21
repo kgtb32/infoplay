@@ -77,4 +77,8 @@ export class InlineListComponent {
       })
     }, 1)
   }
+
+  getImage(item: WheelSelectorItem) {
+    return `/static/games_images/${item.image}`
+  }
 }
