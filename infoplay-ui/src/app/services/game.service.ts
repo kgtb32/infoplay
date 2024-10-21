@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { WheelSelectorItem } from '../models/components/wheel-selector-item';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class GameService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getFavoritesGames() {
-    return this.httpClient.get(GameService.FAVORITES_URL)
+  getFavoritesGames(): Observable<WheelSelectorItem[]> {
+    return this.httpClient.get<WheelSelectorItem[]>(GameService.FAVORITES_URL)
   }
 }
