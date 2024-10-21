@@ -1,6 +1,6 @@
 export interface WheelSelectorItemDescription {
     description?: string;
-    releaseYear?: string;
+    releaseDate?: string;
     genres?: string[];
     players?: number;
     platform?: string;
