@@ -6,7 +6,7 @@ public record GameResponseDto(
     long id,
     String name,
     GameDescription description,
-    byte[] image,
+    String image,
     boolean favorite
 ) {
 } 

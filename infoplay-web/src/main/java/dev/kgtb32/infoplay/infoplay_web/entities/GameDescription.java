@@ -4,10 +4,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -31,7 +36,13 @@ public class GameDescription{
     private String releaseDate;
     private String developer;
     private String publisher;
-    private List<String> genres;
-    private String players;
 
+    @ElementCollection
+    @CollectionTable(name = "game_genres", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "genres")
+    private List<String> genres;
+
+    private String players;
+    @Lob
+    private String description;
 }

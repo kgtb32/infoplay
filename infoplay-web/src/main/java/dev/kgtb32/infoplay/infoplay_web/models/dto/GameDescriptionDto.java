@@ -8,6 +8,7 @@ public record GameDescriptionDto(
     String developer,
     String publisher,
     List<String> genres,
-    String players
+    String players,
+    String description
 ) {
 }
