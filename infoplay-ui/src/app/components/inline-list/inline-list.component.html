@@ -8,7 +8,7 @@
         'home-list-item-selected': this.selectedIndex == $index
       }"
     >
-      <img [src]="item.image" alt="game" class="flex-1" />
+      <img [src]="getImage(item)" alt="game" class="flex-1" />
       <div class="d-flex select-info-overlay">
         <span>Appuyez sur </span>
         <div class="button-x">X</div>
