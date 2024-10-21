@@ -12,6 +12,7 @@ tree = etree.parse(GAME_XML_PATH)
 for game in tree.xpath("/gameList/game"):
     counter += 1
     final_object = dict()
+    final_object["description"] = dict()
     path = None
     image = None
     if(game.find("path") is not None):
@@ -20,12 +21,11 @@ for game in tree.xpath("/gameList/game"):
         image = game.find("image").text.replace("./downloaded_images/", "")
         
     if (game.find("genre") is not None and game.find("genre").text is not None):
-        final_object["genre"] = game.find("genre").text.split("/")
+        final_object['description']["genres"] = game.find("genre").text.split("/")
         
     final_object["name"] = game.find("name").text
-    final_object["description"] = dict()
     final_object["description"]["rating"] = game.find("rating").text
-    final_object["description"]["release_date"] = game.find("releasedate").text
+    final_object["description"]["releaseDate"] = game.find("releasedate").text
     final_object["description"]["developer"] = game.find("developer").text
     final_object["description"]["description"] = game.find("desc").text
     final_object["description"]["publisher"] = game.find("publisher").text
