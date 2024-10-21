@@ -38,8 +38,7 @@ public class GameController {
         );
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping("favorites")
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "favorites")
     public ResponseEntity<List<GameResponseDto>> favorites(){
         return ResponseEntity.ok(
             gameService.getFavoritesGames()
