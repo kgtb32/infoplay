@@ -15,6 +15,7 @@ import dev.kgtb32.infoplay.infoplay_web.mappers.GameDtoEntityMapper;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameCreateDto;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameResponseDto;
 import dev.kgtb32.infoplay.infoplay_web.repository.GameRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -49,6 +50,7 @@ public class GameService {
         }
     }
 
+    @Transactional
     public List<GameResponseDto> getFavoritesGames(){
         return this.gameRepository
             .findAllByFavorite(true)

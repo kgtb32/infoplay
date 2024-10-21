@@ -1,9 +1,7 @@
 package dev.kgtb32.infoplay.infoplay_web.mappers;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 
 import dev.kgtb32.infoplay.infoplay_web.entities.Game;
@@ -19,11 +17,12 @@ public class GameDtoEntityMapper {
             .builder()
             .name(gameCreateDto.name())
             .gamePath(game.getAbsolutePath())
-            .imagePath(image.getAbsolutePath())
+            .imagePath(image.getName())
             .favorite(false)
             .description(
                 GameDescription
                 .builder()
+                .description(gameCreateDto.description().description())
                 .rating(gameCreateDto.description().rating())
                 .releaseDate(gameCreateDto.description().releaseDate())
                 .developer(gameCreateDto.description().developer())
@@ -36,17 +35,11 @@ public class GameDtoEntityMapper {
     }
 
     public GameResponseDto gameToResponseDto(Game game){
-        byte[] data;
-        try {
-            data = FileUtils.readFileToByteArray(new File(game.getImagePath()));
-        } catch (IOException|NullPointerException e) {
-            data = null;
-        }
         return new GameResponseDto(
             game.getId(),
             game.getName(),
             game.getDescription(),
-            data,
+            game.getImagePath(),
             game.isFavorite()
         );
     }
