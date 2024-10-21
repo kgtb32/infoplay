@@ -11,9 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import dev.kgtb32.infoplay.infoplay_web.config.UploadFolderConfiguration;
+import dev.kgtb32.infoplay.infoplay_web.entities.Game;
+import dev.kgtb32.infoplay.infoplay_web.entities.GameCore;
+import dev.kgtb32.infoplay.infoplay_web.exceptions.RestNotFound;
 import dev.kgtb32.infoplay.infoplay_web.mappers.GameDtoEntityMapper;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameCreateDto;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameResponseDto;
+import dev.kgtb32.infoplay.infoplay_web.repository.GameCoreRepository;
 import dev.kgtb32.infoplay.infoplay_web.repository.GameRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -23,8 +27,15 @@ import lombok.AllArgsConstructor;
 public class GameService {
 
     private final UploadFolderConfiguration uploadFolderConfiguration;
-    private final GameRepository gameRepository;
+
     private final GameDtoEntityMapper gameMapper;
+    
+    private final GameRunnerService gameRunnerService;
+
+    private final GameRepository gameRepository;
+    private final GameCoreRepository gameCoreRepository;
+
+
 
     private File saveFile(MultipartFile file, String type) throws IOException{
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
@@ -40,9 +51,10 @@ public class GameService {
         try{
            gameFile =  saveFile(game, "game");
            imageFile = saveFile(image, "image");
+           GameCore core = gameCoreRepository.findFirstByAssociatedPlatformOrderByPriorityDesc(gameCreateDto.platform());
            return Optional.of(
             gameMapper.gameToResponseDto(
-                gameRepository.save(gameMapper.dtoToGame(gameCreateDto, gameFile, imageFile)))
+                gameRepository.save(gameMapper.dtoToGame(gameCreateDto, gameFile, imageFile, core)))
             );
         }
         catch(IOException e){
@@ -57,5 +69,13 @@ public class GameService {
             .parallelStream()
             .map(gameMapper::gameToResponseDto)
             .toList();
+    }
+
+    public boolean runGame(long gameId){
+        Game game = this.gameRepository
+            .findById(gameId)
+            .orElseThrow(() -> new RestNotFound("Game not found !"));
+        
+        return gameRunnerService.runGame(game);
     }
 }

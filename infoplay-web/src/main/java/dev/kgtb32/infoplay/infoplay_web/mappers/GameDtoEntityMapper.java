@@ -33,6 +33,7 @@ public class GameDtoEntityMapper {
                 .players(gameCreateDto.description().players())
                 .build()
             )
+            .core(core)
             .build();
     }
 
