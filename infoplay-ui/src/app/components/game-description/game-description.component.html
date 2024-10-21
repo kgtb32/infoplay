@@ -3,9 +3,9 @@
     <h1>{{ game.name }}</h1>
     <div class="d-flex gap-2 overflow-auto">
       <div class="home-list-description-left-pane">
-        @if (game.description?.releaseYear) {
+        @if (game.description?.releaseDate) {
         <h4>
-          Date de sortie : <b>{{ game.description?.releaseYear }}</b>
+          Date de sortie : <b>{{ game.description?.releaseDate }}</b>
         </h4>
         } @if (game.description?.platform) {
         <h4>
