@@ -24,6 +24,7 @@ for game in tree.xpath("/gameList/game"):
         final_object['description']["genres"] = game.find("genre").text.split("/")
         
     final_object["name"] = game.find("name").text
+    final_object["platform"] = "atari2600"
     final_object["description"]["rating"] = game.find("rating").text
     final_object["description"]["releaseDate"] = game.find("releasedate").text
     final_object["description"]["developer"] = game.find("developer").text
