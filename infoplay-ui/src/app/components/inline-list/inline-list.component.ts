@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
-import { JoypadService } from '../../services/joypad.service';
 import { DOCUMENT } from '@angular/common';
-import { AudioService } from '../../services/audio.service';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
+import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { MovementDirection } from '../../models/core/joypad/joypad-connect-event';
+import { AudioService } from '../../services/audio.service';
+import { JoypadService } from '../../services/joypad.service';
 
 @Component({
   selector: 'app-inline-list',
@@ -46,17 +47,16 @@ export class InlineListComponent {
     @Inject(DOCUMENT) private readonly document: Document,
   ) {
     this.joypadService.axisMoveEvent
+      .pipe(takeUntilDestroyed())
       .pipe(filter(({ directionOfMovement }) => InlineListComponent.ALLOWED_MOVEMENTS.includes(directionOfMovement)))
       .subscribe({
         next: ({ directionOfMovement }) => this.axisMoved(directionOfMovement)
       })
     this.joypadService.buttonPressEvent
+      .pipe(takeUntilDestroyed())
       .pipe(filter(({ buttonName }) => buttonName == InlineListComponent.X_BUTTON))
       .subscribe({
-        next: () => {
-          this.itemClicked.next(this._items[this.selectedIndex])
-          this.joypadService.joypadEnabled = false
-        }
+        next: () => this.itemClicked.next(this._items[this.selectedIndex])
       })
   }
 
