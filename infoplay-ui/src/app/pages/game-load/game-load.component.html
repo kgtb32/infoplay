@@ -1,0 +1,14 @@
+@if (game) {
+<div class="d-flex">
+  <div class="description-padding">
+    <div class="d-flex">
+      <h1 class="flex-1">Lancement de {{ game.name }} ...</h1>
+      <p-progressSpinner ariaLabel="loading" />
+    </div>
+    <div class="d-flex">
+      <img [src]="getImage(game)" alt="game" />
+      <app-game-description [game]="this.game"></app-game-description>
+    </div>
+  </div>
+</div>
+}
