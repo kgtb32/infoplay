@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 
 @Component({
@@ -9,6 +9,9 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 export class InlineListLayoutComponent {
   @Input()
   menuItems: WheelSelectorItem[] = []
+
+  @Output()
+  itemClicked: EventEmitter<WheelSelectorItem> = new EventEmitter();
 
   selectedItem?: WheelSelectorItem
 

@@ -15,13 +15,15 @@ export interface Gamepad {
     vibrationActuator: any
 }
 
+export type MovementDirection = 'left' | 'right' | 'top' | 'bottom'
+
 export interface ButtonPressedDetails {
     buttonName: string;
     button: GamepadButton
     gamepad: Gamepad
     axis: number
     axisMovementValue: number
-    directionOfMovement: 'left' | 'right' | 'top' | 'bottom'
+    directionOfMovement: MovementDirection
     stickMoved: 'left_stick' | 'right_stick'
     totalSticks: number
 }

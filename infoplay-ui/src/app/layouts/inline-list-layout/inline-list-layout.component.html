@@ -1,6 +1,7 @@
 <app-inline-list
   [items]="this.menuItems"
   (itemSelected)="this.itemSelected($event)"
+  (itemClicked)="this.itemClicked.next($event)"
 ></app-inline-list>
 <div class="d-flex flex-column inline-list-layout-container">
   <app-categories-header></app-categories-header>

@@ -1,1 +1,4 @@
-<app-inline-list-layout [menuItems]="this.wheelItems"></app-inline-list-layout>
+<app-inline-list-layout
+  [menuItems]="this.wheelItems"
+  (itemClicked)="this.itemClicked($event)"
+></app-inline-list-layout>

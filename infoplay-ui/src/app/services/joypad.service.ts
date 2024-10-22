@@ -15,9 +15,11 @@ export class JoypadService {
   readonly buttonPressEvent: Subject<ButtonPressedDetails> = new Subject<ButtonPressedDetails>();
   readonly axisMoveEvent: Subject<ButtonPressedDetails> = new Subject<ButtonPressedDetails>();
 
+  joypadEnabled: boolean = true;
+
   constructor() {
-    window.joypad.on('connect', (event) => this.connectEvent.next(event.gamepad))
-    window.joypad.on('button_press', (event) => this.buttonPressEvent.next(event.detail))
-    window.joypad.on('axis_move', event => this.axisMoveEvent.next(event.detail))
+    window.joypad.on('connect', (event) => this.joypadEnabled && this.connectEvent.next(event.gamepad))
+    window.joypad.on('button_press', (event) => this.joypadEnabled && this.buttonPressEvent.next(event.detail))
+    window.joypad.on('axis_move', event => this.joypadEnabled && this.axisMoveEvent.next(event.detail))
   }
 }

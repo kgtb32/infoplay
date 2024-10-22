@@ -8,6 +8,7 @@ export interface WheelSelectorItemDescription {
 }
 
 export interface WheelSelectorItem {
+    id: number
     name: string
     image: string
     description?: WheelSelectorItemDescription
