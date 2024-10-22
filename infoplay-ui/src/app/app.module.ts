@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { GameLoadModule } from './pages/game-load/game-load.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    GameLoadModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
