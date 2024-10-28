@@ -1,0 +1,21 @@
+#!/bin/bash
+
+flatpak run org.chromium.Chromium\
+    --kiosk http://localhost:80\
+    --enable-extensions\
+    --autoplay-policy=no-user-gesture-required\
+    --arc-disable-download-provider\
+    --bypass-app-banner-engagement-checks\
+    --default-background-color=000000\
+    --disable-breakpad\
+    --disable-crash-reporter\
+    --disable-client-side-phishing-detection\
+    --disable-features=InterestFeedContentSuggestions\
+    --disable-features=Translate\
+    --no-default-browser-check\
+    --no-first-run\
+    --ash-no-nudges\
+    --disable-search-engine-choice-screen\
+    --disable-popup-blocking\
+    --disable-sync\
+    --new-window
