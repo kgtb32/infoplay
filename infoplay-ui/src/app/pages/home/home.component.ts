@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { GameService } from '../../services/game.service';
 import { settingsMenu } from '../../menus/settings';
+import { applicationsMenu } from '../../menus/applications';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent {
 
   private readonly categoriesPages: { [key: string]: () => void } = {
     "Favoris": () => this.favorites(),
-    "Paramètres": () => (this.wheelItems = settingsMenu.map(menuEntry => ({ ...menuEntry, action: () => alert("clicked !") })))
+    "Paramètres": () => (this.wheelItems = settingsMenu.map(menuEntry => ({ ...menuEntry, action: () => alert("clicked !") }))),
+    "Applications": () => this.wheelItems = applicationsMenu.map(menuEntry => ({ ...menuEntry, action: () => alert("clicked !") }))
   }
 
   constructor(
