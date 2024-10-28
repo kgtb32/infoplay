@@ -26,6 +26,7 @@ export class InlineListComponent {
   set items(items: WheelSelectorItem[]) {
     this._items = items
     if (items.length > 0) {
+      this.selectedIndex = 0
       this.itemSelected.next(items[0])
     }
   }

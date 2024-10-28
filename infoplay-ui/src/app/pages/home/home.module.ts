@@ -4,14 +4,13 @@ import { InlineListLayoutModule } from '../../layouts/inline-list-layout/inline-
 import { HomeComponent } from './home.component';
 
 
-
 @NgModule({
   declarations: [
     HomeComponent
   ],
   imports: [
     CommonModule,
-    InlineListLayoutModule
+    InlineListLayoutModule,
   ]
 })
 export class HomeModule { }

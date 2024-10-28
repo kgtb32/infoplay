@@ -13,6 +13,9 @@ export class InlineListLayoutComponent {
   @Output()
   itemClicked: EventEmitter<WheelSelectorItem> = new EventEmitter();
 
+  @Output()
+  categoryChanged: EventEmitter<string> = new EventEmitter()
+
   selectedItem?: WheelSelectorItem
 
   constructor(private readonly cd: ChangeDetectorRef) { }
