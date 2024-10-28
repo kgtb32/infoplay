@@ -1,0 +1,10 @@
+[Unit]
+Description=InfoPlay backend
+
+[Service]
+Type=simple
+ExecStart=runInfoplayBackend
+Restart=always
+
+[Install]
+WantedBy=default.target

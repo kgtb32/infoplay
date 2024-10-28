@@ -1,0 +1,10 @@
+[Unit]
+Description=InfoPlay webapp server
+
+[Service]
+Type=simple
+ExecStart=runInfoplayWebapp
+Restart=always
+
+[Install]
+WantedBy=default.target

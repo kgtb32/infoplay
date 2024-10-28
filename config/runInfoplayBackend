@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export INFOPLAY_DATABASE_URL=jdbc:postgresql://localhost:5432/infoplay
+export INFOPLAY_DATABASE_USERNAME=infoplay
+export INFOPLAY_DATABASE_PASSWORD=infoplay
+export INFOPLAY_GAME_IMAGES_UPLOAD_FOLDER=/home/infoplay/static/games_images/
+export INFOPLAY_GAME_ROMS_UPLOAD_FOLDER=/home/infoplay/static/games/
+/home/infoplay/infoplay-backend/infoplay-web
