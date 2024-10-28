@@ -14,7 +14,7 @@ sed -u -e "s,\.,,g" | awk '{print $2}' | sed -u -e "s,\%,,g"  | dialog --backtit
 
 dialog --backtitle "$APP_BACK_TITLE" --infobox "Installing infoplay-web ..." 3 40
 
-mkdir -p /home/infoplay/static/games_image
+mkdir -p /home/infoplay/static/games_images
 mkdir -p /home/infoplay/static/games
 chmod a+x /home/infoplay/infoplay-backend/infoplay-web
 
