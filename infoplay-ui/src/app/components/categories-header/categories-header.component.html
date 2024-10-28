@@ -5,7 +5,7 @@
     <button
       class="category-header-button"
       [ngClass]="{
-        'category-header-button-selected': category === this.selected
+        'category-header-button-selected': $index === this._selected
       }"
     >
       {{ category }}

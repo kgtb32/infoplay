@@ -8,7 +8,11 @@
         'home-list-item-selected': this.selectedIndex == $index
       }"
     >
+      @if (item.image) {
       <img [src]="getImage(item)" alt="game" class="flex-1" />
+      } @else if (item.icon) {
+      <ng-icon [name]="item.icon" class="flex-1" size="15em"></ng-icon>
+      }
       <div class="d-flex select-info-overlay">
         <span>Appuyez sur </span>
         <div class="button-x">X</div>
