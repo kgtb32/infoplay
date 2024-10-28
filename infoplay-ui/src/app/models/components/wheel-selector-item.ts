@@ -10,6 +10,8 @@ export interface WheelSelectorItemDescription {
 export interface WheelSelectorItem {
     id: number
     name: string
-    image: string
-    description?: WheelSelectorItemDescription
+    image?: string
+    description?: WheelSelectorItemDescription,
+    icon?: string
+    action?: (item: WheelSelectorItem) => void
 }
