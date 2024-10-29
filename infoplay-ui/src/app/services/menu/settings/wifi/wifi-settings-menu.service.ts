@@ -31,6 +31,7 @@ export class WifiSettingsMenuService {
       {
         id: 0,
         name: 'Retour',
+        icon: 'tablerArrowBackUp',
         action: () => this.menuStateService.menuOpen.next(SettingsMenuService.ID)
       },
       ...networks.map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
