@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { MenuStateService } from '../../services/menu/menu-state.service';
 import { MenuService } from '../../services/menu/menu.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,10 @@ export class HomeComponent {
   ) {
     this.menuStateService.menuChanged
       .pipe(takeUntilDestroyed())
-      .subscribe(menuItems => this.wheelItems = menuItems)
+      .subscribe(menuItems => {
+        this.wheelItems = menuItems
+        this.cd.detectChanges()
+      })
   }
 
   public itemClicked(item: WheelSelectorItem) {

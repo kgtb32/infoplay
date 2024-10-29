@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlineListComponent } from './inline-list.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { tablerBluetooth, tablerCloudBolt, tablerMovie, tablerRadio, tablerVolume, tablerWifi } from '@ng-icons/tabler-icons'
+import { tablerArrowBackUp, tablerBluetooth, tablerCloudBolt, tablerMovie, tablerRadio, tablerVolume, tablerWifi } from '@ng-icons/tabler-icons'
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { tablerBluetooth, tablerCloudBolt, tablerMovie, tablerRadio, tablerVolum
     InlineListComponent,
   ],
   providers: [
-    provideIcons({ tablerWifi, tablerVolume, tablerBluetooth, tablerMovie, tablerCloudBolt, tablerRadio })
+    provideIcons({ tablerWifi, tablerVolume, tablerBluetooth, tablerMovie, tablerCloudBolt, tablerRadio, tablerArrowBackUp })
   ]
 })
 export class InlineListModule { }
