@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("app.upload-folder")
 public record UploadFolderConfiguration(
     String imageDestinationFolder,
+    String platformImageDestinationFolder,
     String gameDestinationFolder
 ) {
 }
