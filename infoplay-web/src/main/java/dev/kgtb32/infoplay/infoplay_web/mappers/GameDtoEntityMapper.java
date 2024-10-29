@@ -7,13 +7,14 @@ import org.springframework.stereotype.Service;
 import dev.kgtb32.infoplay.infoplay_web.entities.Game;
 import dev.kgtb32.infoplay.infoplay_web.entities.GameCore;
 import dev.kgtb32.infoplay.infoplay_web.entities.GameDescription;
+import dev.kgtb32.infoplay.infoplay_web.entities.Platform;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameCreateDto;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameResponseDto;
 
 @Service
 public class GameDtoEntityMapper {
 
-    public Game dtoToGame(GameCreateDto gameCreateDto, File game, File image, GameCore core){
+    public Game dtoToGame(GameCreateDto gameCreateDto, File game, File image, GameCore core, Platform platform){
         return Game
             .builder()
             .name(gameCreateDto.name())
@@ -23,7 +24,7 @@ public class GameDtoEntityMapper {
             .description(
                 GameDescription
                 .builder()
-                .platform(gameCreateDto.platform())
+                .platform(platform)
                 .description(gameCreateDto.description().description())
                 .rating(gameCreateDto.description().rating())
                 .releaseDate(gameCreateDto.description().releaseDate())

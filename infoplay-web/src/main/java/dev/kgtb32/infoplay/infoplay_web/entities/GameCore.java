@@ -1,9 +1,11 @@
 package dev.kgtb32.infoplay.infoplay_web.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,6 +27,7 @@ public class GameCore{
 
     private String name;
     private String libraryPath;
-    private String associatedPlatform;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Platform associatedPlatform;
     private int priority;
 }
