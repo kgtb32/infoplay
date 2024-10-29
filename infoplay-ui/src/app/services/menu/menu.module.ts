@@ -4,6 +4,7 @@ import { FavoritesService } from './favorites/favorites.service';
 import { SettingsMenuService } from './settings/settings-menu.service';
 import { WifiSettingsMenuService } from './settings/wifi/wifi-settings-menu.service';
 import { AppsMenuService } from './apps/apps-menu.service';
+import { GameConsolesMenuService } from './game/game-consoles-menu.service';
 
 
 
@@ -19,7 +20,8 @@ import { AppsMenuService } from './apps/apps-menu.service';
           FavoritesService,
           SettingsMenuService,
           WifiSettingsMenuService,
-          AppsMenuService
+          AppsMenuService,
+          GameConsolesMenuService
         ].forEach((s: ProviderToken<unknown>) => inject(s))
       }, multi: true
     },
