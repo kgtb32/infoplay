@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
-import { MenuStateService } from '../menu-state.service';
-import { GameService } from '../../game.service';
 import { Router } from '@angular/router';
 import { WheelSelectorItem } from '../../../models/components/wheel-selector-item';
+import { GameService } from '../../game.service';
+import { MenuStateService } from '../menu-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
+  public static readonly ID = "favorites-games"
 
   constructor(
     private readonly menuStateService: MenuStateService,
     private readonly gameService: GameService,
     private readonly router: Router
-  ) { }
+  ) {
+    this.menuStateService.menuOpenedFiltered(FavoritesService.ID)
+      .subscribe({
+        next: () => this.favorites()
+      })
+  }
 
   favorites() {
     this.menuStateService.menuChanged.next([])

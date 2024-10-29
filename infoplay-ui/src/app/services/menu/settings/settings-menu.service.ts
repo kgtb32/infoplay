@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import { MenuStateService } from '../menu-state.service';
 import { settingsMenu } from '../../../menus/settings';
 import { WheelSelectorItem } from '../../../models/components/wheel-selector-item';
+import { MenuStateService } from '../menu-state.service';
+import { WifiSettingsMenuService } from './wifi/wifi-settings-menu.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsMenuService {
+  public static readonly ID = "settings-menu"
 
   constructor(
-    private readonly menuStateService: MenuStateService
-  ) { }
+    private readonly menuStateService: MenuStateService,
+  ) {
+    this.menuStateService.menuOpenedFiltered(SettingsMenuService.ID).subscribe({
+      next: () => this.settings()
+    })
+  }
 
   settings() {
     this.menuStateService.menuChanged.next(
@@ -19,6 +25,10 @@ export class SettingsMenuService {
   }
 
   private settingItemSelected(item: WheelSelectorItem) {
-    alert(item.name)
+    if (item.id == 0) {
+      this.menuStateService.menuOpen.next(WifiSettingsMenuService.ID)
+    } else {
+      alert(item.name)
+    }
   }
 }
