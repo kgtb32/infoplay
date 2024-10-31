@@ -7,10 +7,14 @@ spring:
     hibernate:
       ddl-auto: update
 
+server:
+  error:
+    include-message: always
 app:
   upload-folder:
     image-destination-folder: ${INFOPLAY_GAME_IMAGES_UPLOAD_FOLDER}
     game-destination-folder: ${INFOPLAY_GAME_ROMS_UPLOAD_FOLDER}
+    platform-image-destination-folder: ${INFOPLAY_PLATFORM_IMAGES_UPLOAD_FOLDER}
   retroarch:
     retroarch-run-command:
       - flatpak

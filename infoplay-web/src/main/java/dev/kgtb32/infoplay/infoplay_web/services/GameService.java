@@ -4,21 +4,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import dev.kgtb32.infoplay.infoplay_web.config.UploadFolderConfiguration;
 import dev.kgtb32.infoplay.infoplay_web.entities.Game;
 import dev.kgtb32.infoplay.infoplay_web.entities.GameCore;
+import dev.kgtb32.infoplay.infoplay_web.entities.Platform;
+import dev.kgtb32.infoplay.infoplay_web.exceptions.RestBadRequest;
 import dev.kgtb32.infoplay.infoplay_web.exceptions.RestNotFound;
 import dev.kgtb32.infoplay.infoplay_web.mappers.GameDtoEntityMapper;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameCreateDto;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameResponseDto;
+import dev.kgtb32.infoplay.infoplay_web.models.enums.EnumFileType;
 import dev.kgtb32.infoplay.infoplay_web.repository.GameCoreRepository;
 import dev.kgtb32.infoplay.infoplay_web.repository.GameRepository;
+import dev.kgtb32.infoplay.infoplay_web.repository.PlatformRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
@@ -26,36 +27,33 @@ import lombok.AllArgsConstructor;
 @Service
 public class GameService {
 
-    private final UploadFolderConfiguration uploadFolderConfiguration;
-
     private final GameDtoEntityMapper gameMapper;
     
     private final GameRunnerService gameRunnerService;
+    private final FileService fileService;
 
     private final GameRepository gameRepository;
     private final GameCoreRepository gameCoreRepository;
+    private final PlatformRepository platformRepository;
 
 
-
-    private File saveFile(MultipartFile file, String type) throws IOException{
-        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-        String destFolder = type.equals("image") ? uploadFolderConfiguration.imageDestinationFolder() : uploadFolderConfiguration.gameDestinationFolder();
-        File destinationFile = new File(destFolder+UUID.randomUUID()+"."+extension);
-        file.transferTo(destinationFile);
-        return destinationFile;
-    }
-
+    @Transactional
     public Optional<GameResponseDto> createGame(GameCreateDto gameCreateDto, MultipartFile image, MultipartFile game){
         File imageFile;
         File gameFile;
         try{
-           gameFile =  saveFile(game, "game");
-           imageFile = saveFile(image, "image");
-           GameCore core = gameCoreRepository.findFirstByAssociatedPlatformOrderByPriorityDesc(gameCreateDto.platform());
+           gameFile =  fileService.saveFile(game, EnumFileType.GAME_FILE);
+           imageFile = fileService.saveFile(image, EnumFileType.GAME_IMAGE_FILE);
+           Platform platform = platformRepository
+                .findFirstByName(gameCreateDto.platform())
+                .orElseThrow(() -> new RestBadRequest("Failed to associate a platform based on the given platformId"));
+           GameCore core = gameCoreRepository
+                .findFirstByAssociatedPlatformNameOrderByPriorityDesc(gameCreateDto.platform())
+                .orElseThrow(() -> new RestBadRequest("Failed to associate a game core based on the given platformId"));
            return Optional.of(
-            gameMapper.gameToResponseDto(
-                gameRepository.save(gameMapper.dtoToGame(gameCreateDto, gameFile, imageFile, core)))
-            );
+                gameMapper.gameToResponseDto(
+                    gameRepository.save(gameMapper.dtoToGame(gameCreateDto, gameFile, imageFile, core, platform)))
+                );
         }
         catch(IOException e){
             return Optional.empty();

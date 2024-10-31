@@ -2,12 +2,11 @@ package dev.kgtb32.infoplay.infoplay_web.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,24 +14,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "cores")
-@Builder
+@Table(name = "platform_description")
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Builder
 @Data
-public class GameCore{
-    private static final String SEQUENCE_NAME = "cores_seq";
+public class PlatformDescription {
+    private static final String ID_SEQUENCE = "platform_description_seq";
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = SEQUENCE_NAME)
-    @SequenceGenerator(name = SEQUENCE_NAME, initialValue = 0)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = ID_SEQUENCE)
+    @SequenceGenerator(name = ID_SEQUENCE, initialValue = 0)
     @JsonIgnore
     private long id;
 
-    private String name;
-    private String libraryPath;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Platform associatedPlatform;
-    private int priority;
+    private String releaseDate;
+    @Lob
+    private String description;
+    private String publisher;
 }

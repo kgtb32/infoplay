@@ -5,5 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class RestBadRequest extends RuntimeException{
-    
+    public RestBadRequest(String cause){
+        super(cause);
+    }
 }

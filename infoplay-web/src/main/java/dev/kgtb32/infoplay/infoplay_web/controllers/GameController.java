@@ -35,7 +35,7 @@ public class GameController {
         return ResponseEntity.ok(
             gameService
                 .createGame(gameCreateDto, image, game)
-                .orElseThrow(RestBadRequest::new)
+                .orElseThrow(() -> new RestBadRequest("Unable to create game"))
         );
     }
 

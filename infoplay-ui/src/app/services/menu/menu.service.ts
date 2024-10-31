@@ -3,6 +3,7 @@ import { FavoritesService } from './favorites/favorites.service';
 import { MenuStateService } from './menu-state.service';
 import { SettingsMenuService } from './settings/settings-menu.service';
 import { AppsMenuService } from './apps/apps-menu.service';
+import { GameConsolesMenuService } from './game/game-consoles-menu.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class MenuService {
 
   private readonly categoriesPages: { [key: string]: () => void } = {
     "Favoris": () => this.menuStateService.menuOpen.next(FavoritesService.ID),
+    "Jeux": () => this.menuStateService.menuOpen.next(GameConsolesMenuService.ID),
     "Paramètres": () => this.menuStateService.menuOpen.next(SettingsMenuService.ID),
     "Applications": () => this.menuStateService.menuOpen.next(AppsMenuService.ID),
   }
@@ -20,7 +22,6 @@ export class MenuService {
   ) { }
 
   categoryChanged(category: string): void {
-    console.log("categoryChanged", category)
     return this.categoriesPages[category]?.()
   }
 }
