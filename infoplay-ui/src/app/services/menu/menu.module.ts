@@ -5,6 +5,7 @@ import { SettingsMenuService } from './settings/settings-menu.service';
 import { WifiSettingsMenuService } from './settings/wifi/wifi-settings-menu.service';
 import { AppsMenuService } from './apps/apps-menu.service';
 import { GameConsolesMenuService } from './game/game-consoles-menu.service';
+import { GameByPlatformMenuService } from './game/game-by-platform-menu.service';
 
 
 
@@ -21,7 +22,8 @@ import { GameConsolesMenuService } from './game/game-consoles-menu.service';
           SettingsMenuService,
           WifiSettingsMenuService,
           AppsMenuService,
-          GameConsolesMenuService
+          GameConsolesMenuService,
+          GameByPlatformMenuService
         ].forEach((s: ProviderToken<unknown>) => inject(s))
       }, multi: true
     },
