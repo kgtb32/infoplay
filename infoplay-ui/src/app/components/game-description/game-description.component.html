@@ -9,7 +9,7 @@
         </h4>
         } @if (game.description?.platform) {
         <h4>
-          Plateforme: : <b>{{ game.description?.platform }}</b>
+          Plateforme: : <b>{{ game.description?.platform?.displayName }}</b>
         </h4>
         } @if (game.description?.genres && game.description!.genres!.length > 0)
         {
