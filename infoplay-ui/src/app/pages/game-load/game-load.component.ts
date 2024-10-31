@@ -43,6 +43,6 @@ export class GameLoadComponent implements OnInit {
   }
 
   getImage(item: WheelSelectorItem) {
-    return `/static/games_images/${item.image}`
+    return `/static/${item.image}`
   }
 }
