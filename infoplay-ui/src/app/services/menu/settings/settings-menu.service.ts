@@ -26,7 +26,7 @@ export class SettingsMenuService {
 
   private settingItemSelected(item: WheelSelectorItem) {
     if (item.id == 0) {
-      this.menuStateService.menuOpen.next(WifiSettingsMenuService.ID)
+      this.menuStateService.menuOpen.next({ menuId: WifiSettingsMenuService.ID })
     } else {
       alert(item.name)
     }

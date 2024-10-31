@@ -4,6 +4,7 @@ import { WifiNetwork } from '../../../../models/core/wifi/wifi-network';
 import { WifiService } from '../../../wifi.service';
 import { MenuStateService } from '../../menu-state.service';
 import { SettingsMenuService } from '../settings-menu.service';
+import { DefaultBack } from '../../../../menus/default-back';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,8 @@ export class WifiSettingsMenuService {
   private wifiNetworksRetrieven(networks: WifiNetwork[]) {
     this.menuStateService.menuChanged.next([
       {
-        id: 0,
-        name: 'Retour',
-        icon: 'tablerArrowBackUp',
-        action: () => this.menuStateService.menuOpen.next(SettingsMenuService.ID)
+        ...DefaultBack,
+        action: () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID })
       },
       ...networks.map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
     ])

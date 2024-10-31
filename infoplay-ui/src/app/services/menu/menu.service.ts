@@ -11,10 +11,10 @@ import { GameConsolesMenuService } from './game/game-consoles-menu.service';
 export class MenuService {
 
   private readonly categoriesPages: { [key: string]: () => void } = {
-    "Favoris": () => this.menuStateService.menuOpen.next(FavoritesService.ID),
-    "Jeux": () => this.menuStateService.menuOpen.next(GameConsolesMenuService.ID),
-    "Paramètres": () => this.menuStateService.menuOpen.next(SettingsMenuService.ID),
-    "Applications": () => this.menuStateService.menuOpen.next(AppsMenuService.ID),
+    "Favoris": () => this.menuStateService.menuOpen.next({ menuId: FavoritesService.ID }),
+    "Jeux": () => this.menuStateService.menuOpen.next({ menuId: GameConsolesMenuService.ID }),
+    "Paramètres": () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID }),
+    "Applications": () => this.menuStateService.menuOpen.next({ menuId: AppsMenuService.ID }),
   }
 
   constructor(
