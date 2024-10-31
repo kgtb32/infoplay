@@ -46,6 +46,13 @@ public class GameController {
         );
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "platform/{id}")
+    public ResponseEntity<List<GameResponseDto>> platformFilter(
+        @PathVariable("id") @NotNull String platformId
+    ){
+        return ResponseEntity.ok(this.gameService.getGamesByPlatform(platformId));
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "run/{id}")
     public ResponseEntity<Boolean> runGame(
         @PathVariable("id") @NotNull Long gameId
