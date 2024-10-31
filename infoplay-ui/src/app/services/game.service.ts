@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { WheelSelectorItem } from '../models/components/wheel-selector-item';
 import { Observable } from 'rxjs';
+import { Platform } from '../models/api/platform';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class GameService {
     return this.httpClient.get<WheelSelectorItem[]>(GameService.FAVORITES_URL)
   }
 
-  getPlatforms(): Observable<WheelSelectorItem[]> {
-    return this.httpClient.get<WheelSelectorItem[]>(GameService.PLATFORMS_URL + "/all")
+  getPlatforms(): Observable<Platform[]> {
+    return this.httpClient.get<Platform[]>(GameService.PLATFORMS_URL + "/all")
   }
 
   playGame(id: number): Observable<boolean> {
