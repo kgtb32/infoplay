@@ -10,6 +10,7 @@ import { Platform } from '../models/api/platform';
 export class GameService {
 
   private static readonly FAVORITES_URL = "/api/game/favorites"
+  private static readonly GAME_BY_PLATFORM_URL = "/api/game/platform/"
   private static readonly PLAY_URL = "/api/game/run"
   private static readonly PLATFORMS_URL = "/api/platform"
 
@@ -21,6 +22,10 @@ export class GameService {
 
   getPlatforms(): Observable<Platform[]> {
     return this.httpClient.get<Platform[]>(GameService.PLATFORMS_URL + "/all")
+  }
+
+  getGamesByPlatform(platformId: string): Observable<WheelSelectorItem[]> {
+    return this.httpClient.get<WheelSelectorItem[]>(GameService.GAME_BY_PLATFORM_URL + platformId)
   }
 
   playGame(id: number): Observable<boolean> {

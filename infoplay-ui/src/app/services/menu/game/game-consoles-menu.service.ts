@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MenuStateService } from '../menu-state.service';
 import { GameService } from '../../game.service';
 import { mapPlatformToWheelSelector } from '../../mappers/platform-mapper';
+import { MenuStateService } from '../menu-state.service';
+import { GameByPlatformMenuService } from './game-by-platform-menu.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class GameConsolesMenuService {
   }
 
   private platformClicked(name: string) {
-    alert(name + "clicked")
+    this.menuStateService.menuOpen.next(
+      { menuId: GameByPlatformMenuService.ID, extraData: { [GameByPlatformMenuService.PLATFORM_ID_KEY]: name } }
+    )
   }
 }
