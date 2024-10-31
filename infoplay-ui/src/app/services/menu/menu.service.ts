@@ -22,7 +22,6 @@ export class MenuService {
   ) { }
 
   categoryChanged(category: string): void {
-    console.log("categoryChanged", category)
     return this.categoriesPages[category]?.()
   }
 }

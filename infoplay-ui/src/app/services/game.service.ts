@@ -10,7 +10,7 @@ export class GameService {
 
   private static readonly FAVORITES_URL = "/api/game/favorites"
   private static readonly PLAY_URL = "/api/game/run"
-  private static readonly PLATFORMS_URL = "/api/game/platforms"
+  private static readonly PLATFORMS_URL = "/api/platform"
 
   constructor(private readonly httpClient: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class GameService {
   }
 
   getPlatforms(): Observable<WheelSelectorItem[]> {
-    return this.httpClient.get<WheelSelectorItem[]>(GameService.PLATFORMS_URL)
+    return this.httpClient.get<WheelSelectorItem[]>(GameService.PLATFORMS_URL + "/all")
   }
 
   playGame(id: number): Observable<boolean> {
