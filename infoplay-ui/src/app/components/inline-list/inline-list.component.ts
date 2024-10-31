@@ -6,6 +6,7 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { MovementDirection } from '../../models/core/joypad/joypad-connect-event';
 import { AudioService } from '../../services/audio.service';
 import { JoypadService } from '../../services/joypad.service';
+import { getDynamicImageUrl } from '../../utils/image-utils';
 
 @Component({
   selector: 'app-inline-list',
@@ -21,6 +22,8 @@ export class InlineListComponent {
   private static readonly X_BUTTON = "button_0"
 
   private lastMovement: number = new Date().getTime()
+
+  public readonly getImage = getDynamicImageUrl
 
   @Input()
   set items(items: WheelSelectorItem[]) {
@@ -91,9 +94,5 @@ export class InlineListComponent {
         left: position
       })
     }, 1)
-  }
-
-  getImage(item: WheelSelectorItem) {
-    return `/static/${item.image}`
   }
 }

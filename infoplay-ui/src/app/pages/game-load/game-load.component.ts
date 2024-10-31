@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { JoypadService } from '../../services/joypad.service';
 import { tap } from 'rxjs';
+import { getDynamicImageUrl } from '../../utils/image-utils';
 
 @Component({
   selector: 'app-game-load',
@@ -13,6 +14,8 @@ import { tap } from 'rxjs';
 export class GameLoadComponent implements OnInit {
 
   private static readonly GAME_LAUNCH_DELAY = 5000;
+
+  public readonly getImage = getDynamicImageUrl
 
   game?: WheelSelectorItem
 
@@ -40,9 +43,5 @@ export class GameLoadComponent implements OnInit {
         .pipe(tap(() => this.back()))
         .subscribe()
     }, GameLoadComponent.GAME_LAUNCH_DELAY)
-  }
-
-  getImage(item: WheelSelectorItem) {
-    return `/static/${item.image}`
   }
 }
