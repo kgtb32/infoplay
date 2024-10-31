@@ -17,6 +17,6 @@ export class AppsMenuService {
   }
 
   appsMenu() {
-    this.menuStateService.menuChanged.next(applicationsMenu)
+    this.menuStateService.menuChanged.next({ items: applicationsMenu })
   }
 }

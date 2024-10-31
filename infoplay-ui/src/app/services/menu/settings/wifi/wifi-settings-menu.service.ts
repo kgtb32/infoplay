@@ -28,13 +28,15 @@ export class WifiSettingsMenuService {
   }
 
   private wifiNetworksRetrieven(networks: WifiNetwork[]) {
-    this.menuStateService.menuChanged.next([
-      {
-        ...DefaultBack,
-        action: () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID })
-      },
-      ...networks.map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
-    ])
+    this.menuStateService.menuChanged.next({
+      items: [
+        {
+          ...DefaultBack,
+          action: () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID })
+        },
+        ...networks.map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
+      ]
+    })
   }
 
   private mapWifiNetworkToWheelSelectorItem(network: WifiNetwork, index: number): WheelSelectorItem {

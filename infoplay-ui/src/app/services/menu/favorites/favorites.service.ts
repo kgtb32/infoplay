@@ -22,11 +22,11 @@ export class FavoritesService {
   }
 
   favorites() {
-    this.menuStateService.menuChanged.next([])
+    this.menuStateService.menuChanged.next({ items: [] })
     this.gameService.getFavoritesGames().subscribe({
       next: (games: WheelSelectorItem[]) => this.menuStateService
         .menuChanged
-        .next(games.map(game => ({ ...game, action: this.playGame.bind(this) })))
+        .next({ items: games.map(game => ({ ...game, action: this.playGame.bind(this) })) })
     })
   }
 

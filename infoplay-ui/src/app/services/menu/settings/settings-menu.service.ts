@@ -19,16 +19,14 @@ export class SettingsMenuService {
   }
 
   settings() {
-    this.menuStateService.menuChanged.next(
-      settingsMenu.map(settingEntry => ({ ...settingEntry, action: this.settingItemSelected.bind(this) }))
-    )
+    this.menuStateService.menuChanged.next({
+      items: settingsMenu.map(settingEntry => ({ ...settingEntry, action: this.settingItemSelected.bind(this) }))
+    })
   }
 
   private settingItemSelected(item: WheelSelectorItem) {
     if (item.id == 0) {
       this.menuStateService.menuOpen.next({ menuId: WifiSettingsMenuService.ID })
-    } else {
-      alert(item.name)
     }
   }
 }
