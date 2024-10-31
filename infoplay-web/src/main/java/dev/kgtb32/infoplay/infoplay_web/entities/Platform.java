@@ -1,5 +1,7 @@
 package dev.kgtb32.infoplay.infoplay_web.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,9 +23,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 public class Platform {
+    private static final String SEQUENCE_NAME = "platform_seq";
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = "platform_seq")
-    @SequenceGenerator(name = "platform_seq", initialValue = 0)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = SEQUENCE_NAME)
+    @SequenceGenerator(name = SEQUENCE_NAME, initialValue = 0)
+    @JsonIgnore
     private long id;
     @Column(name = "name", unique = true, nullable = false)
     private String name;

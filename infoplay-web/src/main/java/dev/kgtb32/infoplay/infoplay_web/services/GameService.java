@@ -37,7 +37,7 @@ public class GameService {
     private final PlatformRepository platformRepository;
 
 
-
+    @Transactional
     public Optional<GameResponseDto> createGame(GameCreateDto gameCreateDto, MultipartFile image, MultipartFile game){
         File imageFile;
         File gameFile;

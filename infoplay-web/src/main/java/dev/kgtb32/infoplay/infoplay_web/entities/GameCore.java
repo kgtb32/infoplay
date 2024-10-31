@@ -1,5 +1,7 @@
 package dev.kgtb32.infoplay.infoplay_web.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +22,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class GameCore{
+    private static final String SEQUENCE_NAME = "cores_seq";
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = "cores_seq")
-    @SequenceGenerator(name = "cores_seq", initialValue = 0)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator = SEQUENCE_NAME)
+    @SequenceGenerator(name = SEQUENCE_NAME, initialValue = 0)
+    @JsonIgnore
     private long id;
 
     private String name;

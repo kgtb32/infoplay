@@ -1,5 +1,7 @@
 package dev.kgtb32.infoplay.infoplay_web.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +21,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class PlatformDescription {
-    private static final String ID_SEQUENCE = "platorm_description_seq";
+    private static final String ID_SEQUENCE = "platform_description_seq";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = ID_SEQUENCE)
     @SequenceGenerator(name = ID_SEQUENCE, initialValue = 0)
+    @JsonIgnore
     private long id;
 
     private String releaseDate;
