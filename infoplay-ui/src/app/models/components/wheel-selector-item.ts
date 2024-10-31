@@ -1,9 +1,11 @@
+import { Platform } from "../api/platform";
+
 export interface WheelSelectorItemDescription {
     description?: string;
     releaseDate?: string;
     genres?: string[];
     players?: number;
-    platform?: string;
+    platform?: Platform;
     company?: string
 }
 
