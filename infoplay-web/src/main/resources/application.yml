@@ -7,6 +7,9 @@ spring:
     hibernate:
       ddl-auto: update
 
+server:
+  error:
+    include-message: always
 app:
   upload-folder:
     image-destination-folder: ${INFOPLAY_GAME_IMAGES_UPLOAD_FOLDER}
