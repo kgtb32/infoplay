@@ -10,4 +10,5 @@ import dev.kgtb32.infoplay.infoplay_web.entities.Game;
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long>{
     List<Game> findAllByFavorite(boolean favorite);
+    List<Game> findAllByDescriptionPlatformName(String platformName);
 }
