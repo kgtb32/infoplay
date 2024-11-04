@@ -1,8 +1,10 @@
+@if (this._metadata) {
 <app-inline-list
-  [items]="this.menuItems"
+  [metadata]="this._metadata"
   (itemSelected)="this.itemSelected($event)"
   (itemClicked)="this.itemClicked.next($event)"
 ></app-inline-list>
+}
 <div class="d-flex flex-column inline-list-layout-container">
   <app-categories-header
     (itemSelected)="this.categoryChanged.next($event)"

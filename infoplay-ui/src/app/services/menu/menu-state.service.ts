@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { filter } from 'rxjs';
+import { InlineListMetadata } from '../../models/components/inline-list-metadata';
 import { MenuOpenState } from '../../models/core/state/menu-open-state';
 
 @Injectable({
@@ -8,11 +8,11 @@ import { MenuOpenState } from '../../models/core/state/menu-open-state';
 })
 export class MenuStateService {
 
-  public readonly menuChanged: EventEmitter<WheelSelectorItem[]> = new EventEmitter()
+  public readonly menuChanged: EventEmitter<InlineListMetadata> = new EventEmitter()
   public readonly menuOpen: EventEmitter<MenuOpenState> = new EventEmitter()
 
   constructor() {
-    this.menuChanged.next([])
+    this.menuChanged.next({ items: [] })
   }
 
   menuOpenedFiltered(id: string) {

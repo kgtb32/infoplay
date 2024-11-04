@@ -6,6 +6,8 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { MovementDirection } from '../../models/core/joypad/joypad-connect-event';
 import { AudioService } from '../../services/audio.service';
 import { JoypadService } from '../../services/joypad.service';
+import { getDynamicImageUrl } from '../../utils/image-utils';
+import { InlineListMetadata } from '../../models/components/inline-list-metadata';
 
 @Component({
   selector: 'app-inline-list',
@@ -22,16 +24,20 @@ export class InlineListComponent {
 
   private lastMovement: number = new Date().getTime()
 
+  public readonly getImage = getDynamicImageUrl
+
   @Input()
-  set items(items: WheelSelectorItem[]) {
-    this._items = items
-    if (items.length > 0) {
+  set metadata(metadata: InlineListMetadata) {
+    this._metadata = metadata
+    if (metadata.items.length > 0) {
       this.selectedIndex = 0
-      this.itemSelected.next(items[0])
+      this.itemSelected.next(metadata.items[0])
     }
   }
 
-  _items: WheelSelectorItem[] = []
+  _metadata: InlineListMetadata = {
+    items: []
+  }
 
   @Output()
   itemSelected: EventEmitter<WheelSelectorItem> = new EventEmitter()
@@ -57,7 +63,7 @@ export class InlineListComponent {
       .pipe(takeUntilDestroyed())
       .pipe(filter(({ buttonName }) => buttonName == InlineListComponent.X_BUTTON))
       .subscribe({
-        next: () => this.itemClicked.next(this._items[this.selectedIndex])
+        next: () => this.itemClicked.next(this._metadata?.items[this.selectedIndex])
       })
   }
 
@@ -67,13 +73,13 @@ export class InlineListComponent {
       if (directionOfMovement == 'left' && this.selectedIndex > 0) {
         this.selectedIndex--
       }
-      else if (directionOfMovement == 'right' && this.selectedIndex < this._items.length - 1) {
+      else if (directionOfMovement == 'right' && this.selectedIndex < this._metadata.items.length - 1) {
         this.selectedIndex++
       }
       this.cd.detectChanges()
       this.animateAndScrollSelectedItem(directionOfMovement)
       this.audioService.select()
-      this.itemSelected.next(this._items[this.selectedIndex])
+      this.itemSelected.next(this._metadata.items[this.selectedIndex])
     }
   }
 
@@ -91,9 +97,5 @@ export class InlineListComponent {
         left: position
       })
     }, 1)
-  }
-
-  getImage(item: WheelSelectorItem) {
-    return `/static/${item.image}`
   }
 }

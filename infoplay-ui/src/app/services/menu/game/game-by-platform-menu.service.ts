@@ -5,6 +5,7 @@ import { WheelSelectorItem } from '../../../models/components/wheel-selector-ite
 import { GameService } from '../../game.service';
 import { MenuStateService } from '../menu-state.service';
 import { GameConsolesMenuService } from './game-consoles-menu.service';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,11 +38,17 @@ export class GameByPlatformMenuService {
         action: () => this.menuStateService.menuOpen.next({ menuId: GameConsolesMenuService.ID }),
       }
     ]
-    this.menuStateService.menuChanged.next(
-      backMenu.concat(
+    this.menuStateService.menuChanged.next({
+      letterFiltering: {
+        letterSelectedCallback: (letter) => {
+          alert("letter selected: " + letter)
+          return of([])
+        },
+      },
+      items: backMenu.concat(
         games.map(game => ({ ...game, action: () => this.playGame(game) }))
       )
-    )
+    })
   }
 
   private playGame(game: WheelSelectorItem) {

@@ -20,13 +20,13 @@ export class GameConsolesMenuService {
   }
 
   private consoleMenu() {
-    this.menuStateService.menuChanged.next([])
+    this.menuStateService.menuChanged.next({ items: [] })
     this.gameService.getPlatforms().subscribe({
-      next: platforms => this.menuStateService.menuChanged.next(
-        platforms.map((platform, i) => (
+      next: platforms => this.menuStateService.menuChanged.next({
+        items: platforms.map((platform, i) => (
           { ...mapPlatformToWheelSelector(platform, i), action: () => this.platformClicked(platform.name) }
         ))
-      )
+      })
     })
   }
 

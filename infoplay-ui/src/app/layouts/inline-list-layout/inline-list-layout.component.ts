@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
+import { InlineListMetadata } from '../../models/components/inline-list-metadata';
 
 @Component({
   selector: 'app-inline-list-layout',
@@ -8,7 +9,12 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 })
 export class InlineListLayoutComponent {
   @Input()
-  menuItems: WheelSelectorItem[] = []
+  set metadata(metadata: InlineListMetadata | undefined) {
+    this._metadata = metadata
+    this.selectedItem = undefined
+  }
+
+  _metadata?: InlineListMetadata
 
   @Output()
   itemClicked: EventEmitter<WheelSelectorItem> = new EventEmitter();
