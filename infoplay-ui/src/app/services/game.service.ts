@@ -24,8 +24,12 @@ export class GameService {
     return this.httpClient.get<Platform[]>(GameService.PLATFORMS_URL + "/all")
   }
 
-  getGamesByPlatform(platformId: string): Observable<WheelSelectorItem[]> {
-    return this.httpClient.get<WheelSelectorItem[]>(GameService.GAME_BY_PLATFORM_URL + platformId)
+  getGamesByPlatformAndLetter(platformId: string, letter: string): Observable<WheelSelectorItem[]> {
+    return this.httpClient.get<WheelSelectorItem[]>(GameService.GAME_BY_PLATFORM_URL + platformId, {
+      params: {
+        letter
+      }
+    })
   }
 
   playGame(id: number): Observable<boolean> {
