@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.cache.Cache.ValueWrapper;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +16,7 @@ import dev.kgtb32.infoplay.infoplay_web.entities.Platform;
 import dev.kgtb32.infoplay.infoplay_web.exceptions.RestBadRequest;
 import dev.kgtb32.infoplay.infoplay_web.exceptions.RestNotFound;
 import dev.kgtb32.infoplay.infoplay_web.mappers.GameDtoEntityMapper;
+import dev.kgtb32.infoplay.infoplay_web.models.cache.GameResponseCacheMetadata;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameCreateDto;
 import dev.kgtb32.infoplay.infoplay_web.models.dto.GameResponseDto;
 import dev.kgtb32.infoplay.infoplay_web.models.enums.EnumFileType;
@@ -27,6 +30,8 @@ import lombok.AllArgsConstructor;
 @Service
 public class GameService {
 
+    private static final String GAME_CACHE_NAME = "games";
+
     private final GameDtoEntityMapper gameMapper;
     
     private final GameRunnerService gameRunnerService;
@@ -36,9 +41,13 @@ public class GameService {
     private final GameCoreRepository gameCoreRepository;
     private final PlatformRepository platformRepository;
 
+    private final CacheManager cacheManager;
+
+
 
     @Transactional
     public Optional<GameResponseDto> createGame(GameCreateDto gameCreateDto, MultipartFile image, MultipartFile game){
+        cacheManager.getCache(GAME_CACHE_NAME).clear();
         File imageFile;
         File gameFile;
         try{
@@ -87,10 +96,17 @@ public class GameService {
     }
 
     @Transactional
-    public List<GameResponseDto> getGamesByPlatform(String platformId, String letter) {
-        return getGameList(platformId, letter)
+    public GameResponseDto[] getGamesByPlatform(String platformId, String letter) {
+        GameResponseCacheMetadata cacheMetadata = new GameResponseCacheMetadata(platformId, letter);
+        ValueWrapper value = cacheManager.getCache(GAME_CACHE_NAME).get(cacheMetadata);
+        if(value != null){
+            return (GameResponseDto[]) value.get();
+        }
+        GameResponseDto[] games =  getGameList(platformId, letter)
             .parallelStream()
             .map(gameMapper::gameToResponseDto)
-            .toList();
+            .toArray(size -> new GameResponseDto[size]);
+        cacheManager.getCache(GAME_CACHE_NAME).put(cacheMetadata, games);
+        return games;
     }
 }
