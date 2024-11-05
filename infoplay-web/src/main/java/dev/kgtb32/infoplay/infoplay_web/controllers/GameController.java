@@ -48,7 +48,7 @@ public class GameController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "platform/{id}")
-    public ResponseEntity<List<GameResponseDto>> platformFilter(
+    public ResponseEntity<GameResponseDto[]> platformFilter(
         @PathVariable("id") @NotNull String platformId,
         @RequestParam("letter") String letter
     ){

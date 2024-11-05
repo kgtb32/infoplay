@@ -12,6 +12,8 @@ server:
   error:
     include-message: always
 app:
+  cache:
+    cacheExpirationDays: 30
   upload-folder:
     image-destination-folder: ${INFOPLAY_GAME_IMAGES_UPLOAD_FOLDER}
     game-destination-folder: ${INFOPLAY_GAME_ROMS_UPLOAD_FOLDER}
