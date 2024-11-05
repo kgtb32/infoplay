@@ -4,6 +4,7 @@ import { InlineListLayoutComponent } from './inline-list-layout.component';
 import { CategoriesHeaderModule } from "../../components/categories-header/categories-header.module";
 import { GameDescriptionModule } from "../../components/game-description/game-description.module";
 import { InlineListModule } from '../../components/inline-list/inline-list.module';
+import { LetterFilterModule } from '../../components/letter-filter/letter-filter.module';
 
 
 
@@ -15,7 +16,8 @@ import { InlineListModule } from '../../components/inline-list/inline-list.modul
     CommonModule,
     CategoriesHeaderModule,
     GameDescriptionModule,
-    InlineListModule
+    InlineListModule,
+    LetterFilterModule
   ],
   exports: [
     InlineListLayoutComponent

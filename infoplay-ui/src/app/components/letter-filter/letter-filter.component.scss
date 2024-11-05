@@ -1,0 +1,17 @@
+.letter {
+  padding: 1em;
+  border: 2px solid white;
+  border-radius: 1em;
+  height: min-content;
+  color: white;
+}
+
+.letter-selected {
+  background: white;
+  color: black;
+}
+
+.letter > span {
+  margin: auto;
+  display: block;
+}

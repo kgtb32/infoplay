@@ -1,0 +1,21 @@
+<!--prettier-ignore-->
+<div class="d-flex justify-content-center">
+    @for (currentLetter of letters; track $index) {
+        <div class="letter" [ngClass]="{
+            'letter-selected': this.letter == currentLetter
+        }">
+            @if (currentLetter === '#') {
+                <span>∞</span>
+            }
+            @else if (currentLetter === '*'){
+                <span>#</span>
+            }
+            @else if (currentLetter === '0') {
+                <span>0-9</span>
+            }
+            @else {
+                <span>{{ currentLetter }}</span>
+            }
+        </div>
+    }
+</div>
