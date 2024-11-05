@@ -8,6 +8,7 @@ import { AudioService } from '../../services/audio.service';
 import { JoypadService } from '../../services/joypad.service';
 import { getDynamicImageUrl } from '../../utils/image-utils';
 import { InlineListMetadata } from '../../models/components/inline-list-metadata';
+import { MenuStateService } from '../../services/menu/menu-state.service';
 
 @Component({
   selector: 'app-inline-list',
@@ -51,6 +52,7 @@ export class InlineListComponent {
     private readonly joypadService: JoypadService,
     private readonly cd: ChangeDetectorRef,
     private readonly audioService: AudioService,
+    private readonly menuStateService: MenuStateService,
     @Inject(DOCUMENT) private readonly document: Document,
   ) {
     this.joypadService.axisMoveEvent
@@ -65,6 +67,20 @@ export class InlineListComponent {
       .subscribe({
         next: () => this.itemClicked.next(this._metadata?.items[this.selectedIndex])
       })
+    this.menuStateService.directMenuChanged
+      .pipe(takeUntilDestroyed())
+      .subscribe({
+        next: this.directMenuChange.bind(this)
+      })
+  }
+
+  private directMenuChange(items: WheelSelectorItem[]) {
+    this.selectedIndex = 0
+    this._metadata.items = items
+    this.cd.detectChanges()
+    this.documentElementScroll.scroll({
+      left: 0
+    })
   }
 
   private axisMoved(directionOfMovement: MovementDirection) {
@@ -83,17 +99,20 @@ export class InlineListComponent {
     }
   }
 
+  get documentElementScroll() {
+    return this.document.getElementsByClassName(InlineListComponent.CONTAINER)[0]
+  }
+
   private animateAndScrollSelectedItem(direction: MovementDirection) {
     const documentElement = this.document.getElementsByClassName(InlineListComponent.ANIMATOR_CLASS)[0]
-    const documentElementScroll = this.document.getElementsByClassName(InlineListComponent.CONTAINER)[0]
-    const position = direction == 'left' ? documentElementScroll.scrollLeft - documentElement.clientWidth : documentElementScroll.scrollLeft + documentElement.clientWidth
-    documentElementScroll.scroll({
+    const position = direction == 'left' ? this.documentElementScroll.scrollLeft - documentElement.clientWidth : this.documentElementScroll.scrollLeft + documentElement.clientWidth
+    this.documentElementScroll.scroll({
       left: position
     })
     documentElement.classList.remove(InlineListComponent.ANIMATOR_CLASS)
     setTimeout(() => {
       documentElement.classList.add(InlineListComponent.ANIMATOR_CLASS)
-      documentElementScroll.scroll({
+      this.documentElementScroll.scroll({
         left: position
       })
     }, 1)

@@ -32,6 +32,7 @@ public class GameDescription{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = "game_description_seq")
     @SequenceGenerator(name = "game_description_seq", initialValue = 0)
+    @Column(name = "game_description_id")
     @JsonIgnore
     private long id;
     private Float rating;

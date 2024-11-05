@@ -9,6 +9,9 @@
   <app-categories-header
     (itemSelected)="this.categoryChanged.next($event)"
   ></app-categories-header>
+  @if (this._metadata?.letterFiltering) {
+  <app-letter-filter [metadata]="this._metadata!"></app-letter-filter>
+  }
   <div class="flex-1"></div>
   @if (this.selectedItem) {
   <app-game-description [game]="selectedItem"></app-game-description>

@@ -29,10 +29,12 @@ public class Platform {
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = SEQUENCE_NAME)
     @SequenceGenerator(name = SEQUENCE_NAME, initialValue = 0)
     @JsonIgnore
+    @Column(name = "platform_id")
     private long id;
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "platform_name", unique = true, nullable = false)
     private String name;
     private String displayName;
+    @Column(name = "platform_image_path")
     private String imagePath;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -3,6 +3,7 @@ package dev.kgtb32.infoplay.infoplay_web.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,8 +29,9 @@ public class GameCore{
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = SEQUENCE_NAME)
     @SequenceGenerator(name = SEQUENCE_NAME, initialValue = 0)
     @JsonIgnore
+    @Column(name = "core_id")
     private long id;
-
+    @Column(name = "core_name")
     private String name;
     private String libraryPath;
     @ManyToOne(cascade = CascadeType.PERSIST)

@@ -1,11 +1,12 @@
 spring:
+  thread-executor: virtual
   datasource:
     url: ${INFOPLAY_DATABASE_URL}
     username: ${INFOPLAY_DATABASE_USERNAME}
     password: ${INFOPLAY_DATABASE_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      generate-ddl: false
 
 server:
   error:
