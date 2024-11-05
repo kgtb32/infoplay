@@ -1,10 +1,12 @@
 export interface WifiNetwork {
-    inUse: boolean
-    bssid: string
     ssid: string
-    mode: string
-    chan: number
+    bssid: string
+    freq: string
     rate: string
+    bandwidth: string
     signal: number
     security: string
+    device: string
+    active: boolean
+    inUse: boolean
 }

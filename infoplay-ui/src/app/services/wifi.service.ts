@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { WifiNetwork } from '../models/core/wifi/wifi-network';
 
 @Injectable({
@@ -7,20 +8,13 @@ import { WifiNetwork } from '../models/core/wifi/wifi-network';
 })
 export class WifiService {
 
-  constructor() { }
+  private readonly baseUrl = '/api/wifi'
+
+  private readonly wifiListUrl = this.baseUrl + '/networks'
+
+  constructor(private readonly httpClient: HttpClient) { }
 
   wifiNetworks(): Observable<WifiNetwork[]> {
-    return of(Array(12).fill(
-      {
-        inUse: true,
-        bssid: "02:67:44:10:14:6A",
-        mode: "Infra",
-        chan: 12,
-        rate: "270 Mbit/s",
-        signal: 70,
-        security: 'WPA1 WPA2',
-        ssid: 'DUMMY NETWORK'
-      }
-    ))
+    return this.httpClient.get<WifiNetwork[]>(this.wifiListUrl)
   }
 }
