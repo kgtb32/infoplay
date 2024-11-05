@@ -22,6 +22,14 @@ export class WifiSettingsMenuService {
   }
 
   wifiMenu() {
+    this.menuStateService.menuChanged.next({
+      items: [
+        {
+          ...DefaultBack,
+          action: () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID })
+        },
+      ]
+    })
     this.wifiService.wifiNetworks().subscribe({
       next: networks => this.wifiNetworksRetrieven(networks)
     })
@@ -34,16 +42,31 @@ export class WifiSettingsMenuService {
           ...DefaultBack,
           action: () => this.menuStateService.menuOpen.next({ menuId: SettingsMenuService.ID })
         },
-        ...networks.map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
+        ...networks
+          .filter(network => !!network.ssid)
+          .map((network, index) => this.mapWifiNetworkToWheelSelectorItem(network, index))
       ]
     })
+  }
+
+  private bars(signal: number) {
+    if (signal > 0 && signal < 25) {
+      return 'tablerWifi0'
+    }
+    else if (signal >= 25 && signal < 50) {
+      return 'tablerWifi1'
+    }
+    else if (signal >= 50 && signal < 75) {
+      return 'tablerWifi2'
+    }
+    return 'tablerWifi'
   }
 
   private mapWifiNetworkToWheelSelectorItem(network: WifiNetwork, index: number): WheelSelectorItem {
     return {
       id: index + 1,
       name: network.ssid,
-      icon: 'tablerWifi',
+      icon: this.bars(network.signal)
     }
   }
 }
