@@ -2,6 +2,7 @@ package dev.kgtb32.infoplay.infoplay_web.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class PlatformDescription {
     private static final String ID_SEQUENCE = "platform_description_seq";
 
     @Id
+    @Column(name = "platform_description_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = ID_SEQUENCE)
     @SequenceGenerator(name = ID_SEQUENCE, initialValue = 0)
     @JsonIgnore

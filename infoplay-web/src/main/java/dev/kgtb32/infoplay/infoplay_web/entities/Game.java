@@ -3,6 +3,7 @@ package dev.kgtb32.infoplay.infoplay_web.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,10 +28,13 @@ public class Game{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator = "game_seq")
     @SequenceGenerator(name = "game_seq", initialValue = 0)
+    @Column(name = "game_id")
     private long id;
+    @Column(name = "game_name")
     private String name;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     GameDescription description;
+    @Column(name = "game_image_path")
     private String imagePath;
     private String gamePath;
     private boolean favorite;

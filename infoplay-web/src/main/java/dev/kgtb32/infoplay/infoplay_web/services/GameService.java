@@ -21,7 +21,6 @@ import dev.kgtb32.infoplay.infoplay_web.repository.GameCoreRepository;
 import dev.kgtb32.infoplay.infoplay_web.repository.GameRepository;
 import dev.kgtb32.infoplay.infoplay_web.repository.PlatformRepository;
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -78,11 +77,18 @@ public class GameService {
         return gameRunnerService.runGame(game);
     }
 
+    private List<Game> getGameList(String platformId, String letter){
+        return switch(letter){
+            case "0" -> this.gameRepository.findAllGamesByPlatformAndRegex(platformId, "^\\d+");
+            case "#" -> this.gameRepository.findAllGamesByPlatformAndRegex(platformId, "^[^A-Za-z\\d]+");
+            case null -> this.gameRepository.findAllByDescriptionPlatformName(platformId);
+            default -> this.gameRepository.findAllByDescriptionPlatformNameAndNameStartingWithIgnoreCase(platformId, letter);
+        };
+    }
+
     @Transactional
-    public List<GameResponseDto> getGamesByPlatform(@NotNull String platformId) {
-        return this
-            .gameRepository
-            .findAllByDescriptionPlatformName(platformId)
+    public List<GameResponseDto> getGamesByPlatform(String platformId, String letter) {
+        return getGameList(platformId, letter)
             .parallelStream()
             .map(gameMapper::gameToResponseDto)
             .toList();

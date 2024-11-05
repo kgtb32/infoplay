@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,9 +49,10 @@ public class GameController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "platform/{id}")
     public ResponseEntity<List<GameResponseDto>> platformFilter(
-        @PathVariable("id") @NotNull String platformId
+        @PathVariable("id") @NotNull String platformId,
+        @RequestParam("letter") String letter
     ){
-        return ResponseEntity.ok(this.gameService.getGamesByPlatform(platformId));
+        return ResponseEntity.ok(this.gameService.getGamesByPlatform(platformId, letter));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "run/{id}")
