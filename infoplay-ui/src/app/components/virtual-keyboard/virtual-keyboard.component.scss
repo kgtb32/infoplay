@@ -1,0 +1,46 @@
+.char {
+  width: 4em;
+  height: 4em;
+}
+
+.char-special {
+  flex: 1;
+  height: 4em;
+}
+
+.char-space {
+  flex: 7;
+  height: 4em;
+}
+
+.selected {
+  background: #0095ff !important;
+  border-color: #005ea1 !important;
+}
+
+.char,
+.char-special,
+.char-space {
+  color: white;
+  background: black;
+  border: 1px solid white;
+  border-radius: 0.5em;
+  display: flex;
+}
+
+.chars-container {
+  gap: 0.75em;
+  margin-top: 0.37em;
+  margin-bottom: 0.37em;
+}
+
+.char > span,
+.char-special > span,
+.char-space > span {
+  display: block;
+  font-size: 2em;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  font-family: "Roboto", sans-serif;
+}

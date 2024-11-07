@@ -1,0 +1,19 @@
+<!--prettier-ignore-->
+<div class="d-flex flex-column justify-content-between">
+  @for (line of this.currentLayout; track $index; let y = $index) {
+  <div class="d-flex chars-container">
+    @for (char of line; track $index; let x = $index) {
+    <div
+      [ngClass]="{
+                    'char': char.length === 1,
+                    'char-space': char === 'ESP',
+                    'selected': this.currentPositions.x === x && this.currentPositions.y === y,
+                    'char-special': char.length >= 1 && char !== 'ESP',
+                }"
+    >
+      <span>{{ getLetter(x, y) }}</span>
+    </div>
+    }
+  </div>
+  }
+</div>
