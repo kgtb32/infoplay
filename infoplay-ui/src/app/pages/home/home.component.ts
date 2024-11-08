@@ -23,7 +23,6 @@ export class HomeComponent {
       .pipe(takeUntilDestroyed())
       .subscribe(inlineListState => {
         this.inlineListState = inlineListState
-        console.log(this.inlineListState)
         this.cd.detectChanges()
       })
   }
