@@ -3,7 +3,7 @@
     @for (currentLetter of letters; track $index) {
         <div class="letter" [ngClass]="{
             'letter-selected': this.letter == currentLetter
-        }">
+        }" attr.data-testid="current_letter_{{$index}}">
             @if (currentLetter === '#') {
                 <span>∞</span>
             }

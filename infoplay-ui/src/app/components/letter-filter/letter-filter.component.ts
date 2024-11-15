@@ -6,11 +6,11 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { JoypadService } from '../../services/joypad.service';
 import { MenuStateService } from '../../services/menu/menu-state.service';
 
-const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0#";
-const LEFT_STICK = "button_4"
-const RIGHT_STICK = "button_5"
+export const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0#";
+export const LEFT_STICK = "button_4"
+export const RIGHT_STICK = "button_5"
 
-const FIRST_LETTER_LOAD = 0
+export const FIRST_LETTER_LOAD = 0
 
 @Component({
   selector: 'app-letter-filter',
@@ -52,11 +52,13 @@ export class LetterFilterComponent {
   set metadata(metadata: InlineListMetadata) {
     this._metadata = metadata
     this.selectedIndex = 0
-    const promises = this.letters.map(letter => firstValueFrom(
-      this._metadata.letterFiltering!.letterSelectedCallback(letter)
-        .pipe(tap(items => this.letterItems[letter] = items))
-    ))
-    promises[FIRST_LETTER_LOAD].then(() => this.buttonPressed(LEFT_STICK))
+    if (metadata.letterFiltering) {
+      const promises = this.letters.map(letter => firstValueFrom(
+        this._metadata.letterFiltering!.letterSelectedCallback(letter)
+          .pipe(tap(items => this.letterItems[letter] = items))
+      ))
+      promises[FIRST_LETTER_LOAD].then(() => this.buttonPressed(LEFT_STICK))
+    }
   }
 
   _metadata!: InlineListMetadata

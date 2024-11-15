@@ -10,10 +10,14 @@ describe('GameDescriptionComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [GameDescriptionComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GameDescriptionComponent);
     component = fixture.componentInstance;
+    component.game = {
+      id: 0,
+      name: 'test'
+    }
     fixture.detectChanges();
   });
 

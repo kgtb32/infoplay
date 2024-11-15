@@ -27,7 +27,7 @@ export class VirtualKeyboardComponent {
     button_0: (letter: string) => this.letterClicked(letter)
   }
   private readonly letterActionAssociation: { [key: string]: Function } = {
-    BOT: () => this.virtualKeyboardService.enabled = true,
+    BOT: () => this.virtualKeyboardService.enabled = false,
     MAJ: () => this.majuscule = !this.majuscule,
     ABC: () => this.current = 'letters',
     "123": () => this.current = 'numbers',
