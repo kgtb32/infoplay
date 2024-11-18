@@ -6,6 +6,7 @@ import { AudioService } from '../../services/audio.service';
 import { JoypadService } from '../../services/joypad.service';
 import { MenuStateService } from '../../services/menu/menu-state.service';
 import { InlineListComponent } from './inline-list.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('InlineListComponent', () => {
   let component: InlineListComponent;
@@ -22,7 +23,10 @@ describe('InlineListComponent', () => {
   beforeEach(async () => {
     jasmine.clock().install()
     await TestBed.configureTestingModule({
-      declarations: [InlineListComponent]
+      declarations: [InlineListComponent],
+      providers: [
+        provideHttpClient()
+      ]
     })
       .compileComponents();
     joypadService = TestBed.inject(JoypadService)

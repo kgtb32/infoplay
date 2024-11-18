@@ -6,6 +6,7 @@ import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { MenuService } from '../../services/menu/menu.service';
 import { MenuStateService } from '../../services/menu/menu-state.service';
 import { InlineListMetadata } from '../../models/components/inline-list-metadata';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -18,6 +19,9 @@ describe('HomeComponent', () => {
       declarations: [HomeComponent],
       imports: [
         InlineListLayoutModule
+      ],
+      providers: [
+        provideHttpClient()
       ]
     })
       .compileComponents();
