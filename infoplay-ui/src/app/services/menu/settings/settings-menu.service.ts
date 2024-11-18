@@ -3,12 +3,18 @@ import { settingsMenu } from '../../../menus/settings';
 import { WheelSelectorItem } from '../../../models/components/wheel-selector-item';
 import { MenuStateService } from '../menu-state.service';
 import { WifiSettingsMenuService } from './wifi/wifi-settings-menu.service';
+import { AudioMenuService } from './audio/audio-menu.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsMenuService {
   public static readonly ID = "settings-menu"
+
+  private readonly menuIds = [
+    WifiSettingsMenuService.ID,
+    AudioMenuService.ID
+  ]
 
   constructor(
     private readonly menuStateService: MenuStateService,
@@ -25,8 +31,6 @@ export class SettingsMenuService {
   }
 
   private settingItemSelected(item: WheelSelectorItem) {
-    if (item.id == 0) {
-      this.menuStateService.menuOpen.next({ menuId: WifiSettingsMenuService.ID })
-    }
+    this.menuStateService.menuOpen.next({ menuId: this.menuIds[item.id] })
   }
 }
