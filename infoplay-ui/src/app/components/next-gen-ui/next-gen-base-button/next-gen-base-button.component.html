@@ -1,0 +1,20 @@
+<div class="next-gen-button-container">
+  <div
+    class="next-gen-button d-flex"
+    [ngClass]="{
+      'next-gen-button-selected': selected,
+    }"
+  >
+    <ng-icon
+      data-testid="app.next-gen-base-button-left-icon"
+      [name]="leftIcon"
+      [size]="iconSize"
+    ></ng-icon>
+    <span data-testid="app.next-gen-base-button-text">{{ text }}</span>
+    <ng-icon
+      data-testid="app.next-gen-base-button-rigth-icon"
+      [name]="rightIcon"
+      [size]="iconSize"
+    ></ng-icon>
+  </div>
+</div>
