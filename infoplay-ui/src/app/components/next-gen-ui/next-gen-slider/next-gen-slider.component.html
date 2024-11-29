@@ -1,0 +1,22 @@
+<div class="next-gen-slider-wrapper">
+  <div
+    class="next-gen-slider-container flex-1"
+    [ngClass]="{
+      'next-gen-slider-wrapper-selected': selected,
+    }"
+  >
+    <ng-icon [name]="icon" color="white" [size]="iconSize"></ng-icon>
+    <span class="next-gen-slider-label my-auto">{{ text }}</span>
+    <div class="flex-1 d-flex next-gen-slider-divider">
+      @for (_ of [].constructor(this.stepsQuantity); track $index) {
+        <span
+          class="next-gen-slider my-auto"
+          [class.next-gen-slider-lit]="value >= step * $index + 1"
+          [class.next-gen-slider-lit-unselected]="!selected"
+          [class.next-gen-slider-lit-selected]="selected"
+          [class.next-gen-slider-max]="value <= step * ($index + 1) + 1"
+        ></span>
+      }
+    </div>
+  </div>
+</div>
