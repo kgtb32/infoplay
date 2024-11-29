@@ -1,0 +1,8 @@
+@if (this._metadata?.components) {
+  @for (component of this._metadata?.components; track $index) {
+    <ng-container
+      [ngComponentOutlet]="getComponent($index).component"
+      [ngComponentOutletInputs]="getComponent($index).props"
+    ></ng-container>
+  }
+}

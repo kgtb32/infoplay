@@ -1,0 +1,15 @@
+<div class="next-gen-radio-container">
+  @for (entry of this.entries; track $index) {
+    <app-next-gen-base-button
+      [clickedEvent]="this.clickedEvent"
+      [leftIcon]="
+        entry.key === this.selectedValue
+          ? 'tablerCircleDotFill'
+          : 'tablerCircle'
+      "
+      [text]="entry.value"
+      [selected]="this.actualPosition === this.currentPosition + $index"
+    >
+    </app-next-gen-base-button>
+  }
+</div>

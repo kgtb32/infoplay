@@ -1,0 +1,12 @@
+<app-next-gen-base-button
+  [leftIcon]="iconsAssociation[type]"
+  [text]="text"
+  [selected]="selected"
+></app-next-gen-base-button>
+@if (displayModal) {
+  <app-next-gen-input-overlay
+    (closed)="this.closed($event)"
+    [text]="_text"
+    [type]="type"
+  ></app-next-gen-input-overlay>
+}

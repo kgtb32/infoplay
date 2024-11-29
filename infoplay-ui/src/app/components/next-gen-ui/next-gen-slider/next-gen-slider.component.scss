@@ -1,0 +1,48 @@
+.next-gen-slider-container {
+  width: 100%;
+  display: flex;
+  border: 2px solid white;
+  border-radius: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.next-gen-slider-wrapper {
+  padding: 0.25em;
+}
+
+.next-gen-slider-label {
+  color: white;
+  font-family: "Roboto", Arial, monospace;
+  font-weight: bolder;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+}
+
+.next-gen-slider {
+  flex: 1;
+  color: transparent;
+  height: 0.5em;
+}
+
+.next-gen-slider-divider {
+  margin-left: 0.25em;
+}
+
+.next-gen-slider-lit:first-of-type {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+.next-gen-slider-lit.next-gen-slider-lit-unselected,
+.next-gen-slider-wrapper-selected {
+  background: #0095ff;
+}
+.next-gen-slider-max {
+  border-start-end-radius: 0.5em;
+  border-end-end-radius: 0.5em;
+}
+
+.next-gen-slider-lit.next-gen-slider-lit-selected {
+  background: white;
+}

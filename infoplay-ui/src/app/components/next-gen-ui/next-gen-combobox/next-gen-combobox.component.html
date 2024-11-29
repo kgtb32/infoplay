@@ -1,0 +1,14 @@
+<app-next-gen-base-button
+  [clickedEvent]="this.clickedEvent"
+  [selected]="this.selected"
+  [text]="this.selectedValue"
+  rightIcon="tablerArrowBadgeDown"
+>
+</app-next-gen-base-button>
+
+@if (this.displayModal) {
+  <app-next-gen-combobox-overlay
+    [items]="this._items"
+    (itemSelected)="comboboxValueSelected($event)"
+  ></app-next-gen-combobox-overlay>
+}

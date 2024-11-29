@@ -1,0 +1,10 @@
+<app-next-gen-base-overlay>
+  @for (entry of this.entries; track $index) {
+    <app-next-gen-base-button
+      [selected]="this.current === $index"
+      [text]="entry.value"
+      rightIcon="tablerArrowBadgeRight"
+    >
+    </app-next-gen-base-button>
+  }
+</app-next-gen-base-overlay>
