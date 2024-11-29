@@ -81,6 +81,17 @@ describe('VirtualKeyboardComponent', () => {
     expect(spy).toHaveBeenCalledWith("CAN")
     component.letterClicked(" OK")
     expect(spy).toHaveBeenCalledWith("OK")
+    let index = 0
+    const possiblesValues = ['a', 'A']
+    virtualKeyboardService.keyPressed.subscribe({
+      next: (value: string) => {
+        expect(value).toEqual(possiblesValues[index])
+        index++
+      }
+    })
+    component.letterClicked('A')
+    component.letterClicked("MAJ")
+    component.letterClicked('A')
   })
 
   it("should pad X coordinates", () => {

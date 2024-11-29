@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { letters, numbers, specialChars } from '../../models/core/keyboard/layouts/azerty';
 import { CurrentPosition } from '../../models/components/virtual-keyboard/current-position';
 import { KeyboardTypes } from '../../models/core/keyboard/keyboard-types';
+import { nanoid } from 'nanoid';
 
 @Component({
   selector: 'app-virtual-keyboard',
@@ -16,6 +17,8 @@ import { KeyboardTypes } from '../../models/core/keyboard/keyboard-types';
 })
 export class VirtualKeyboardComponent {
   private static readonly THREESHOLD = 300
+
+  public static readonly JOYPAD_SCENE_ID = nanoid(16)
 
   private readonly joypadDirectionsMapping: { [key: string]: Function } = {
     left: () => this.moveLeft(),
@@ -62,7 +65,7 @@ export class VirtualKeyboardComponent {
     private readonly cd: ChangeDetectorRef,
     private readonly virtualKeyboardService: VirtualKeyboardService
   ) {
-    this.joypadService.axisMoveEvent
+    this.joypadService.axisMoveEventFiltered(VirtualKeyboardComponent.JOYPAD_SCENE_ID)
       .pipe(takeUntilDestroyed())
       .pipe(filter(() => new Date().getTime() - this.lastMovement > VirtualKeyboardComponent.THREESHOLD))
       .subscribe((event: ButtonPressedDetails) => {
@@ -70,13 +73,21 @@ export class VirtualKeyboardComponent {
         this.joypadDirectionsMapping[event.directionOfMovement]()
         this.cd.detectChanges()
       })
-    this.joypadService.buttonPressEvent.pipe(takeUntilDestroyed()).subscribe((event: ButtonPressedDetails) =>
-      this.joypadButtonsMapping?.[event.buttonName]?.(this.currentLayout[this.currentPositions.y][this.currentPositions.x])
-    )
+    this.joypadService
+      .buttonPressEventFiltered(VirtualKeyboardComponent.JOYPAD_SCENE_ID)
+      .pipe(takeUntilDestroyed())
+      .subscribe((event: ButtonPressedDetails) =>
+        this.joypadButtonsMapping?.[event.buttonName]?.(this.currentLayout[this.currentPositions.y][this.currentPositions.x])
+      )
   }
 
   letterClicked(letter: string) {
-    this.letterActionAssociation?.[letter]?.()
+    if (this.letterActionAssociation?.[letter]) {
+      this.letterActionAssociation?.[letter]?.()
+    }
+    else {
+      this.virtualKeyboardService.keyPressed.next(this.majuscule ? letter.toUpperCase() : letter.toLowerCase())
+    }
     this.cd.detectChanges()
   }
 
