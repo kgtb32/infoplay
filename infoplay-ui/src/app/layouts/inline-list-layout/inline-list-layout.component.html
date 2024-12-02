@@ -1,19 +1,20 @@
 @if (this._metadata) {
-<app-inline-list
-  [metadata]="this._metadata"
-  (itemSelected)="this.itemSelected($event)"
-  (itemClicked)="this.itemClicked.next($event)"
-></app-inline-list>
+  <app-inline-list
+    [metadata]="this._metadata"
+    (itemSelected)="this.itemSelected($event)"
+    (itemClicked)="this.itemClicked.next($event)"
+  ></app-inline-list>
 }
 <div class="d-flex flex-column inline-list-layout-container">
   <app-categories-header
     (itemSelected)="this.categoryChanged.next($event)"
+    [selected]="selectedCategory"
   ></app-categories-header>
   @if (this._metadata?.letterFiltering) {
-  <app-letter-filter [metadata]="this._metadata!"></app-letter-filter>
+    <app-letter-filter [metadata]="this._metadata!"></app-letter-filter>
   }
   <div class="flex-1"></div>
   @if (this.selectedItem) {
-  <app-game-description [game]="selectedItem"></app-game-description>
+    <app-game-description [game]="selectedItem"></app-game-description>
   }
 </div>
