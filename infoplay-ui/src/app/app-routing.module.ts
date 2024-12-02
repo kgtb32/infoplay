@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component'
+import { FavoritesGamesComponent } from './pages/favorites-games/favorites-games.component';
 import { GameLoadComponent } from './pages/game-load/game-load.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: FavoritesGamesComponent
   },
   {
     path: 'game/:id/play',

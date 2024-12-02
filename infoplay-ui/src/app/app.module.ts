@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { GameLoadModule } from './pages/game-load/game-load.module';
+import { FavoritesGamesModule } from './pages/favorites-games/favorites-games.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { GameLoadModule } from './pages/game-load/game-load.module';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    FavoritesGamesModule,
     GameLoadModule
   ],
   providers: [
