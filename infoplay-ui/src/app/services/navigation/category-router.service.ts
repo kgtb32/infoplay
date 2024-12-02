@@ -8,7 +8,7 @@ export class CategoryRouterService {
 
   private readonly routesCategoriesAssociation: { [key: string]: string } = {
     'Favoris': '',
-    'Jeux': 'games',
+    'Jeux': '/platforms',
     'Paramètres': 'settings',
     'Applications': 'apps',
     'Playlists': 'playlists'
