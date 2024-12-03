@@ -5,6 +5,7 @@ import { GameLoadComponent } from './pages/game-load/game-load.component';
 import { PlatformsListComponent } from './pages/platforms-list/platforms-list.component';
 import { GamesByPlatformComponent } from './pages/games-by-platform/games-by-platform.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { AudioSettingsComponent } from './pages/audio-settings/audio-settings.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent
+  },
+  {
+    path: 'settings/audio',
+    component: AudioSettingsComponent
   }
 ];
 

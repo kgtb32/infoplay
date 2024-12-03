@@ -10,6 +10,7 @@ import { FavoritesGamesModule } from './pages/favorites-games/favorites-games.mo
 import { PlatformsListModule } from './pages/platforms-list/platforms-list.module';
 import { GamesByPlatformModule } from './pages/games-by-platform/games-by-platform.module';
 import { SettingsModule } from './pages/settings/settings.module';
+import { AudioSettingsModule } from './pages/audio-settings/audio-settings.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SettingsModule } from './pages/settings/settings.module';
     PlatformsListModule,
     GamesByPlatformModule,
     SettingsModule,
+    AudioSettingsModule,
     GameLoadModule
   ],
   providers: [
