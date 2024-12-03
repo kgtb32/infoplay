@@ -38,7 +38,7 @@ export class PlatformsListComponent implements OnInit {
   }
 
   private platformClicked(name: string) {
-    this.router.navigate(['platform', name, 'games'])
+    this.router.navigate(['/platforms', name, 'games'])
   }
 
   categoryChanged(categoryName: string) {
