@@ -9,6 +9,7 @@ import { GameLoadModule } from './pages/game-load/game-load.module';
 import { FavoritesGamesModule } from './pages/favorites-games/favorites-games.module';
 import { PlatformsListModule } from './pages/platforms-list/platforms-list.module';
 import { GamesByPlatformModule } from './pages/games-by-platform/games-by-platform.module';
+import { SettingsModule } from './pages/settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GamesByPlatformModule } from './pages/games-by-platform/games-by-platfo
     FavoritesGamesModule,
     PlatformsListModule,
     GamesByPlatformModule,
+    SettingsModule,
     GameLoadModule
   ],
   providers: [
