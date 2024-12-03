@@ -24,6 +24,7 @@ export interface NextGenBaseComponentProps {
 export interface NextGenButtonProps extends NextGenBaseComponentProps {
     text: string
     icon?: string
+    onClick?: EventEmitter<void>
 }
 
 export interface NextGenCheckboxProps extends NextGenBaseComponentProps {

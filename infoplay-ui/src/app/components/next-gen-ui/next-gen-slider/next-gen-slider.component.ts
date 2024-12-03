@@ -63,6 +63,7 @@ export class NextGenSliderComponent extends NextGenBaseComponent {
     else if (directionOfMovement === 'right' && this.value < this.maxValue) {
       this.value = this.value + this.step
     }
+    this.valueChanged.next(this.value)
     this.lastMovement = new Date().getTime()
     this.cd.detectChanges()
   }
