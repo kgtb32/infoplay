@@ -12,6 +12,7 @@ import { GamesByPlatformModule } from './pages/games-by-platform/games-by-platfo
 import { SettingsModule } from './pages/settings/settings.module';
 import { AudioSettingsModule } from './pages/audio-settings/audio-settings.module';
 import { WifiSettingsModule } from './pages/wifi-settings/wifi-settings.module';
+import { AppsModule } from './pages/apps/apps.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WifiSettingsModule } from './pages/wifi-settings/wifi-settings.module';
     SettingsModule,
     AudioSettingsModule,
     WifiSettingsModule,
-    GameLoadModule
+    GameLoadModule,
+    AppsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

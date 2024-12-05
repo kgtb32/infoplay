@@ -7,6 +7,7 @@ import { GamesByPlatformComponent } from './pages/games-by-platform/games-by-pla
 import { SettingsComponent } from './pages/settings/settings.component';
 import { AudioSettingsComponent } from './pages/audio-settings/audio-settings.component';
 import { WifiSettingsComponent } from './pages/wifi-settings/wifi-settings.component';
+import { AppsComponent } from './pages/apps/apps.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'settings/wifi',
     component: WifiSettingsComponent
+  },
+  {
+    path: 'apps',
+    component: AppsComponent
   }
 ];
 
