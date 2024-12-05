@@ -11,6 +11,7 @@ import { PlatformsListModule } from './pages/platforms-list/platforms-list.modul
 import { GamesByPlatformModule } from './pages/games-by-platform/games-by-platform.module';
 import { SettingsModule } from './pages/settings/settings.module';
 import { AudioSettingsModule } from './pages/audio-settings/audio-settings.module';
+import { WifiSettingsModule } from './pages/wifi-settings/wifi-settings.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AudioSettingsModule } from './pages/audio-settings/audio-settings.modul
     GamesByPlatformModule,
     SettingsModule,
     AudioSettingsModule,
+    WifiSettingsModule,
     GameLoadModule
   ],
   providers: [
