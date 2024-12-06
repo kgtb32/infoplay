@@ -14,8 +14,10 @@ describe('CategoriesHeaderComponent', () => {
       declarations: [CategoriesHeaderComponent]
     })
       .compileComponents();
+    jasmine.clock().uninstall()
     jasmine.clock().install()
     jasmine.clock().mockDate(new Date("2022-01-01T00:00:00"))
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
     joypadService = TestBed.inject(JoypadService)
     fixture = TestBed.createComponent(CategoriesHeaderComponent);
     component = fixture.componentInstance;

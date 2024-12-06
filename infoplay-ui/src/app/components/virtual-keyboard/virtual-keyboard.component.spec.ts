@@ -14,6 +14,7 @@ describe('VirtualKeyboardComponent', () => {
   let joypadService: JoypadService
 
   beforeEach(async () => {
+    jasmine.clock().uninstall()
     jasmine.clock().install()
     await TestBed.configureTestingModule({
       declarations: [VirtualKeyboardComponent]

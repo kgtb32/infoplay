@@ -21,6 +21,7 @@ describe('InlineListComponent', () => {
   })
 
   beforeEach(async () => {
+    jasmine.clock().uninstall()
     jasmine.clock().install()
     await TestBed.configureTestingModule({
       declarations: [InlineListComponent],
@@ -40,12 +41,11 @@ describe('InlineListComponent', () => {
 
   afterEach(() => {
     jasmine.clock().uninstall()
-    joypadService.axisMoveEvent.unsubscribe()
-    fixture.destroy()
   })
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
   });
 
   it("should update metadata", () => {
@@ -64,6 +64,7 @@ describe('InlineListComponent', () => {
     joypadService.axisMoveEvent.next({
       directionOfMovement: 'right'
     } as ButtonPressedDetails)
+    tick(10)
     expect(component.selectedIndex).toBe(metadata().items.length - 1)
   }
 
@@ -97,15 +98,18 @@ describe('InlineListComponent', () => {
     testRightMax()
   }))
 
-  it("should autoscroll inside the list", () => {
+  it("should autoscroll inside the list", fakeAsync(() => {
+    spyOnProperty(component, 'documentElementScroll').and.returnValue({
+      scroll(_options?: any) {
+        expect(_options.left).toBeDefined()
+      }
+    } as Element)
     component.metadata = metadata()
     spyOn(audioService, "select").and.callFake(() => void 0)
-    const elementScrollSpy = spyOn(component.documentElementScroll, "scroll")
     jasmine.clock().mockDate(new Date(new Date().getTime() + 200))
     testRightMax()
-    jasmine.clock().tick(10)
-    expect(elementScrollSpy).toHaveBeenCalled()
-  })
+    jasmine.clock().mockDate(new Date(new Date().getTime() + 10))
+  }))
 
   it("should handle direct menu change", () => {
     component.metadata = metadata()

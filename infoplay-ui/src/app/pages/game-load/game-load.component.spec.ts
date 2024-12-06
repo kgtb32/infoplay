@@ -36,7 +36,7 @@ describe('GameLoadComponent', () => {
     })
       .compileComponents();
 
-
+    jasmine.clock().uninstall()
     jasmine.clock().install()
 
     gameService = TestBed.inject(GameService)

@@ -23,6 +23,7 @@ describe('NextGenSliderComponent', () => {
       ]
     })
       .compileComponents();
+    jasmine.clock().uninstall()
     jasmine.clock().install()
     joypadService = TestBed.inject(JoypadService)
     fixture = TestBed.createComponent(NextGenSliderComponent);

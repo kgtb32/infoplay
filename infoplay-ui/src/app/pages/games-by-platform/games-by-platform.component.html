@@ -1,0 +1,6 @@
+<app-inline-list-layout
+  [metadata]="this.inlineListMetadata"
+  (itemClicked)="$event.action?.($event)"
+  (categoryChanged)="this.categoryChanged($event)"
+  [selectedCategory]="1"
+></app-inline-list-layout>

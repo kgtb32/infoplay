@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input } from '@angular/core';
 import { NextGenBaseComponent } from '../next-gen-base/next-gen-base.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-next-gen-button',
@@ -15,6 +16,9 @@ export class NextGenButtonComponent extends NextGenBaseComponent {
   @Input()
   text?: string
 
+  @Input()
+  onClick: EventEmitter<void> = new EventEmitter()
+
   constructor(private readonly cd: ChangeDetectorRef) {
     super()
   }
@@ -29,6 +33,8 @@ export class NextGenButtonComponent extends NextGenBaseComponent {
   }
 
   override afterClickedEventChanged(_clickedEvent: EventEmitter<void>): void {
-    return
+    _clickedEvent.asObservable().pipe(filter(() => this.selected)).subscribe({
+      next: () => this.onClick.next()
+    })
   }
 }

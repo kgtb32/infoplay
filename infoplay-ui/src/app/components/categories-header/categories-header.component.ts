@@ -26,6 +26,7 @@ export class CategoriesHeaderComponent implements OnDestroy, OnInit {
 
   _selected: number = 0
 
+  @Input()
   set selected(val: number) {
     this._selected = val
     this.cd.detectChanges()

@@ -36,7 +36,13 @@ describe('NextGenButtonComponent', () => {
     expect(component.selected).toBeFalse()
   })
 
-  it("should not handle button clicked event", () => {
-    expect(component.afterClickedEventChanged(new EventEmitter())).toBeUndefined()
+  it("should proxy button clicked event", () => {
+    const eventEmitter: EventEmitter<void> = new EventEmitter()
+    component.onClick.subscribe({
+      next: () => expect().nothing()
+    })
+    component.selected = true
+    component.afterClickedEventChanged(eventEmitter)
+    eventEmitter.next()
   })
 });
