@@ -22,7 +22,7 @@
     "@ng-icons/core": "29.10.0",
     "@ng-icons/tabler-icons": "29.10.0",
     "@tsparticles/angular": "^3.0.0",
-    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/engine": "3.7.1",
     "angular-tabler-icons": "^3.1.0",
     "animejs": "^3.2.2",
     "dayjs": "^1.11.13",
