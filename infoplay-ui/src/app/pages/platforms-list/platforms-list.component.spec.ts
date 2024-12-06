@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlatformsListComponent } from './platforms-list.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { InlineListLayoutModule } from '../../layouts/inline-list-layout/inline-list-layout.module';
 import { Platform } from '../../models/api/platform';
 import { GameService } from '../../services/game.service';
 import { of } from 'rxjs';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const platforms: Platform[] = Array(42).fill({
   description: {
@@ -30,10 +31,10 @@ describe('PlatformsListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PlatformsListComponent],
-      providers: [provideHttpClient()],
-      imports: [InlineListLayoutModule],
+      providers: [provideHttpClient(withInterceptorsFromDi())],
+      imports: [InlineListLayoutModule, CommonModule],
     }).compileComponents();
-
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
     gameService = TestBed.inject(GameService);
     router = TestBed.inject(Router)
 

@@ -28,7 +28,7 @@ describe('FavoritesGamesComponent', () => {
       ]
     })
       .compileComponents();
-
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
     router = TestBed.inject(Router)
     gameService = TestBed.inject(GameService)
     categoryRouterService = TestBed.inject(CategoryRouterService)

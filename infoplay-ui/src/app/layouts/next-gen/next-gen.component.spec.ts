@@ -52,6 +52,7 @@ describe('NextGenComponent', () => {
       declarations: [NextGenComponent]
     })
       .compileComponents();
+    jasmine.clock().uninstall()
     jasmine.clock().install()
     joypadService = TestBed.inject(JoypadService)
     fixture = TestBed.createComponent(NextGenComponent);

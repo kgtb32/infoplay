@@ -15,10 +15,12 @@ describe('InlineListLayoutComponent', () => {
       declarations: [InlineListLayoutComponent],
       imports: [
         CategoriesHeaderModule,
-        GameDescriptionModule
+        GameDescriptionModule,
       ]
     })
       .compileComponents();
+
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
 
     fixture = TestBed.createComponent(InlineListLayoutComponent);
     component = fixture.componentInstance;

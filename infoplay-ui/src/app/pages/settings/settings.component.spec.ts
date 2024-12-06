@@ -27,7 +27,7 @@ describe('SettingsComponent', () => {
       ]
     })
       .compileComponents();
-
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
     router = TestBed.inject(Router)
     categoryRouterService = TestBed.inject(CategoryRouterService)
 

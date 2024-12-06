@@ -92,7 +92,7 @@ describe('WifiSettingsComponent', () => {
   })
 
   it("should clear interval on destroy", () => {
-    const spy = spyOn(window, "clearInterval")
+    const spy = spyOn(window, "clearInterval").and.callFake(() => void 0)
     component.ngOnDestroy()
     expect(spy).toHaveBeenCalled()
   })

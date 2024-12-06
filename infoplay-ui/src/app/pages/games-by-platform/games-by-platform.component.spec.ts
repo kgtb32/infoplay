@@ -48,7 +48,7 @@ describe('GamesByPlatformComponent', () => {
       ]
     })
       .compileComponents();
-
+    spyOn(window, "clearInterval").and.callFake(() => void 0)
     gameService = TestBed.inject(GameService)
     router = TestBed.inject(Router)
     categoryRouterService = TestBed.inject(CategoryRouterService)
