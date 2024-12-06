@@ -109,4 +109,12 @@ public class GameService {
         cacheManager.getCache(GAME_CACHE_NAME).put(cacheMetadata, games);
         return games;
     }
+
+    public List<GameResponseDto> toggleGameFavorite(long gameId){
+        Game game = this.gameRepository.findById(gameId)
+                        .orElseThrow(() -> new RestNotFound("Game with gameid couldn't be found"));
+        game.setFavorite(!game.isFavorite());
+        this.gameRepository.save(game);
+        return getFavoritesGames();
+    }
 }
