@@ -110,6 +110,7 @@ public class GameService {
         return games;
     }
 
+    @Transactional
     public List<GameResponseDto> toggleGameFavorite(long gameId){
         Game game = this.gameRepository.findById(gameId)
                         .orElseThrow(() -> new RestNotFound("Game with gameid couldn't be found"));
