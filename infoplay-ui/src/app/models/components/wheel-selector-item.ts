@@ -15,5 +15,6 @@ export interface WheelSelectorItem {
     image?: string
     description?: WheelSelectorItemDescription,
     icon?: string
+    favorite?: boolean
     action?: (item: WheelSelectorItem) => void
 }
