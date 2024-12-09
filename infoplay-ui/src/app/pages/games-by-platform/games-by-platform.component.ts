@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { InlineListMetadata } from '../../models/components/inline-list-metadata';
 import { defaultLoadingMenu } from '../../menus/default-loading-menu';
 import { WheelSelectorItem } from '../../models/components/wheel-selector-item';
@@ -28,6 +28,7 @@ export class GamesByPlatformComponent implements OnInit {
     private readonly gameService: GameService,
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +48,15 @@ export class GamesByPlatformComponent implements OnInit {
             .pipe(map((value) => [this.defaultBack].concat(value))),
       },
     };
+  }
+
+  favoriteToggle(game: WheelSelectorItem) {
+    this.gameService.toggleFavoritesGames(game.id).subscribe({
+      next: () => {
+        game.favorite = !game.favorite
+        this.cd.detectChanges()
+      }
+    })
   }
 
   private playGame(game: WheelSelectorItem) {
